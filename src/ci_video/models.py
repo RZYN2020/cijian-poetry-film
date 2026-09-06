@@ -112,7 +112,8 @@ class Script(Model):
         expected = ["modern_moment", "emotion", "poem_enters", "context", "rereading", "return_today"]
         collapsed = [r for i, r in enumerate(roles) if i == 0 or r != roles[i-1]]
         if collapsed != expected:
-            raise ValueError(f"narrative arc must be {expected}")
+            if not all(r in {"poem_enters", "rereading", "return_today"} for r in roles):
+                raise ValueError(f"narrative arc must be {expected} or poem-only recital")
         return self
 
 
