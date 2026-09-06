@@ -82,7 +82,7 @@ const Film: React.FC<Props> = ({board}) => {
 };
 
 const Root: React.FC = () => <Composition<any, Props>
-  id="PoetryFilm" component={Film} width={1080} height={1920} fps={24} durationInFrames={1440}
+  id="PoetryFilm" component={Film} width={1080} height={1920} fps={24} durationInFrames={1440} defaultProps={{board: {title:'',poem_title:'',author:'',width:1080,height:1920,fps:24,scenes:[],assets:[]}}}
   calculateMetadata={({props}) => ({width:props.board.width, height:props.board.height, fps:props.board.fps, durationInFrames:props.board.scenes.reduce((n,s)=>n+Math.round(s.duration*props.board.fps),0)})}
 />;
 registerRoot(Root);
