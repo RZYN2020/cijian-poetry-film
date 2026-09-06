@@ -1,5 +1,5 @@
 export type Asset = {
-  id: string; kind: 'image' | 'video' | 'font'; path: string;
+  id: string; kind: 'image' | 'video' | 'font' | 'audio'; path: string;
   creator: string; license: string; source: string; object_position: string;
 };
 export type Scene = {
@@ -12,6 +12,7 @@ export type Board = {
   title: string; poem_title: string; author: string;
   width: number; height: number; fps: number;
   scenes: Scene[]; assets: Asset[];
-  bgm_path?: string | null; bgm_volume?: number;
+  bgm_path?: string | null; bgm_volume: number;
+  bgm_start: number; bgm_fade: number; bgm_duck: number;
 };
 export type Props = {board: Board};

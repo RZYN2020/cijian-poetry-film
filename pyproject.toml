@@ -3,7 +3,7 @@ name = "ci-video"
 version = "0.1.0"
 description = "Editable, sourced poetry films from a structured storyboard"
 requires-python = ">=3.11"
-dependencies = ["pydantic>=2.10,<3", "httpx>=0.28,<1", "python-dotenv>=1,<2", "edge-tts>=7.2,<8", "srt>=3.5,<4"]
+dependencies = ["pydantic>=2.10,<3", "httpx>=0.28,<1", "python-dotenv>=1,<2", "edge-tts>=7.2,<8", "srt>=3.5,<4", "pillow>=11,<13"]
 
 [dependency-groups]
 dev = ["pytest>=8,<10"]

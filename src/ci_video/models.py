@@ -7,7 +7,7 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator, field_validator
 
 Text = Annotated[str, Field(min_length=1)]
-Stage = Literal["modern_moment", "emotion", "poem_enters", "context", "rereading", "return_today"]
+Stage = Literal["recital", "modern_moment", "emotion", "poem_enters", "context", "rereading", "return_today"]
 
 
 class Model(BaseModel):
@@ -100,6 +100,7 @@ class Beat(Model):
 
 class Script(Model):
     schema_version: Literal["1.0"] = "1.0"
+    mode: Literal["recital", "essay"] = "recital"
     title: Text
     emotional_thesis: Text
     provenance: Text
@@ -108,12 +109,13 @@ class Script(Model):
     @model_validator(mode="after")
     def structure(self):
         unique(self.beats, "beat")
+        if self.mode == "recital":
+            return self
         roles = [b.role for b in self.beats]
         expected = ["modern_moment", "emotion", "poem_enters", "context", "rereading", "return_today"]
         collapsed = [r for i, r in enumerate(roles) if i == 0 or r != roles[i-1]]
         if collapsed != expected:
-            if not all(r in {"poem_enters", "rereading", "return_today"} for r in roles):
-                raise ValueError(f"narrative arc must be {expected} or poem-only recital")
+            raise ValueError(f"narrative arc must be {expected}")
         return self
 
 
@@ -126,7 +128,7 @@ def safe_relative(value: str) -> str:
 
 class Asset(Model):
     id: Text
-    kind: Literal["image", "video", "font"]
+    kind: Literal["image", "video", "font", "audio"]
     path: Text
     source: Text
     creator: Text
@@ -136,6 +138,9 @@ class Asset(Model):
     sha256: str = ""
     description: Text
     object_position: str = "50% 50%"
+    attribution: str = ""
+    acquired_at: str = ""
+    generation: dict | None = None
     _path = field_validator("path")(safe_relative)
 
 
@@ -155,6 +160,8 @@ class NarrationAudio(Model):
     voice: Text
     rate: Text
     timing_method: Literal["tts_boundaries", "estimated", "manual"]
+    model: str = ""
+    request_hash: str = ""
     _path = field_validator("path")(safe_relative)
 
 
@@ -168,6 +175,7 @@ class Scene(Model):
     claim_ids: list[str] = []
     role: Stage
     quote: str = ""
+    voice_offset: float = Field(default=1.0, ge=0)
     audio: NarrationAudio | None = None
 
     @model_validator(mode="after")
@@ -188,6 +196,8 @@ class Storyboard(Model):
     title: Text
     poem_title: Text
     author: Text
+    mode: Literal["recital", "essay"] = "recital"
+    original_text: str = ""
     width: int = Field(default=1080, ge=360, le=3840)
     height: int = Field(default=1920, ge=360, le=3840)
     fps: int = Field(default=24, ge=12, le=60)
@@ -195,6 +205,14 @@ class Storyboard(Model):
     scenes: list[Scene] = Field(min_length=6, max_length=10)
     bgm_path: str | None = None
     bgm_volume: float = Field(default=0.12, ge=0, le=1)
+    bgm_start: float = Field(default=0, ge=0)
+    bgm_fade: float = Field(default=3, ge=0.01)
+    bgm_duck: float = Field(default=0.5, ge=0, le=1)
+
+    @field_validator("bgm_path")
+    @classmethod
+    def music_path(cls, value):
+        return safe_relative(value) if value is not None else value
 
     @model_validator(mode="after")
     def references(self):
@@ -206,8 +224,8 @@ class Storyboard(Model):
         for s in self.scenes:
             if not set(s.asset_refs) <= assets.keys():
                 raise ValueError(f"scene {s.id}: unknown asset")
-            if any(assets[a].kind == "font" for a in s.asset_refs):
-                raise ValueError("font cannot be used as scene image")
+            if any(assets[a].kind not in {"image", "video"} for a in s.asset_refs):
+                raise ValueError("only image/video can be used as scene visual")
             if not math.isclose(s.duration * self.fps, round(s.duration * self.fps), abs_tol=1e-5):
                 raise ValueError(f"scene {s.id}: duration must be a multiple of 1/fps")
         return self

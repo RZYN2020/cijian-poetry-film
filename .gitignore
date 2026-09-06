@@ -16,3 +16,4 @@ projects/*/audio/
 projects/*/*.mp4
 projects/*/qa/
 .cache/
+examples/*/history/

@@ -1,0 +1,129 @@
+{
+  "$defs": {
+    "Beat": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "recital",
+            "modern_moment",
+            "emotion",
+            "poem_enters",
+            "context",
+            "rereading",
+            "return_today"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "narration": {
+          "minLength": 1,
+          "title": "Narration",
+          "type": "string"
+        },
+        "subtitle_lines": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Subtitle Lines",
+          "type": "array"
+        },
+        "visual_intent": {
+          "minLength": 1,
+          "title": "Visual Intent",
+          "type": "string"
+        },
+        "asset_hint": {
+          "minLength": 1,
+          "title": "Asset Hint",
+          "type": "string"
+        },
+        "claim_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Claim Ids",
+          "type": "array"
+        },
+        "quote": {
+          "default": "",
+          "title": "Quote",
+          "type": "string"
+        },
+        "editorial_note": {
+          "default": "",
+          "title": "Editorial Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "role",
+        "narration",
+        "subtitle_lines",
+        "visual_intent",
+        "asset_hint",
+        "claim_ids"
+      ],
+      "title": "Beat",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "mode": {
+      "default": "recital",
+      "enum": [
+        "recital",
+        "essay"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "emotional_thesis": {
+      "minLength": 1,
+      "title": "Emotional Thesis",
+      "type": "string"
+    },
+    "provenance": {
+      "minLength": 1,
+      "title": "Provenance",
+      "type": "string"
+    },
+    "beats": {
+      "items": {
+        "$ref": "#/$defs/Beat"
+      },
+      "maxItems": 10,
+      "minItems": 6,
+      "title": "Beats",
+      "type": "array"
+    }
+  },
+  "required": [
+    "title",
+    "emotional_thesis",
+    "provenance",
+    "beats"
+  ],
+  "title": "Script",
+  "type": "object"
+}

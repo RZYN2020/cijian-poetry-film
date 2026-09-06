@@ -1,0 +1,73 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "poem_title": {
+      "minLength": 1,
+      "title": "Poem Title",
+      "type": "string"
+    },
+    "author": {
+      "minLength": 1,
+      "title": "Author",
+      "type": "string"
+    },
+    "poem_text": {
+      "minLength": 1,
+      "title": "Poem Text",
+      "type": "string"
+    },
+    "emotion": {
+      "minLength": 1,
+      "title": "Emotion",
+      "type": "string"
+    },
+    "modern_moment": {
+      "minLength": 1,
+      "title": "Modern Moment",
+      "type": "string"
+    },
+    "target_seconds": {
+      "default": 60,
+      "maximum": 120,
+      "minimum": 30,
+      "title": "Target Seconds",
+      "type": "number"
+    },
+    "tone": {
+      "default": [
+        "克制",
+        "安静",
+        "含蓄",
+        "有记忆感"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Tone",
+      "type": "array"
+    },
+    "avoid": {
+      "default": [
+        "鸡汤",
+        "营销",
+        "过度煽情",
+        "作者介绍开场",
+        "虚构作者生平"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Avoid",
+      "type": "array"
+    }
+  },
+  "required": [
+    "poem_title",
+    "author",
+    "poem_text",
+    "emotion",
+    "modern_moment"
+  ],
+  "title": "Brief",
+  "type": "object"
+}

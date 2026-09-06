@@ -1,0 +1,14 @@
+[
+  {
+    "id": "moonlight",
+    "kind": "audio",
+    "path": "assets/music/moonlight-scott-buckley.mp3",
+    "source": "https://www.scottbuckley.com.au/library/moonlight/",
+    "creator": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "download_url": "https://www.scottbuckley.com.au/library/wp-content/uploads/2022/07/Moonlight.mp3",
+    "description": "Moonlight，2022-07-08；现成的钢琴与弦乐录音，怀旧、舒缓；不是古琴或模型生成的音乐。官方曲目页与署名要求已于2026-09-07核验。",
+    "attribution": "'Moonlight' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au"
+  }
+]

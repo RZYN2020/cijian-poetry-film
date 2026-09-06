@@ -1,0 +1,433 @@
+{
+  "$defs": {
+    "Asset": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "image",
+            "video",
+            "font",
+            "audio"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "creator": {
+          "minLength": 1,
+          "title": "Creator",
+          "type": "string"
+        },
+        "license": {
+          "minLength": 1,
+          "title": "License",
+          "type": "string"
+        },
+        "license_url": {
+          "default": "",
+          "title": "License Url",
+          "type": "string"
+        },
+        "download_url": {
+          "default": "",
+          "title": "Download Url",
+          "type": "string"
+        },
+        "sha256": {
+          "default": "",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "object_position": {
+          "default": "50% 50%",
+          "title": "Object Position",
+          "type": "string"
+        },
+        "attribution": {
+          "default": "",
+          "title": "Attribution",
+          "type": "string"
+        },
+        "acquired_at": {
+          "default": "",
+          "title": "Acquired At",
+          "type": "string"
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generation"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "path",
+        "source",
+        "creator",
+        "license",
+        "description"
+      ],
+      "title": "Asset",
+      "type": "object"
+    },
+    "NarrationAudio": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "text_sha256": {
+          "minLength": 1,
+          "title": "Text Sha256",
+          "type": "string"
+        },
+        "file_sha256": {
+          "minLength": 1,
+          "title": "File Sha256",
+          "type": "string"
+        },
+        "duration": {
+          "exclusiveMinimum": 0,
+          "title": "Duration",
+          "type": "number"
+        },
+        "offset": {
+          "default": 0.35,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "number"
+        },
+        "provider": {
+          "minLength": 1,
+          "title": "Provider",
+          "type": "string"
+        },
+        "voice": {
+          "minLength": 1,
+          "title": "Voice",
+          "type": "string"
+        },
+        "rate": {
+          "minLength": 1,
+          "title": "Rate",
+          "type": "string"
+        },
+        "timing_method": {
+          "enum": [
+            "tts_boundaries",
+            "estimated",
+            "manual"
+          ],
+          "title": "Timing Method",
+          "type": "string"
+        },
+        "model": {
+          "default": "",
+          "title": "Model",
+          "type": "string"
+        },
+        "request_hash": {
+          "default": "",
+          "title": "Request Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "text_sha256",
+        "file_sha256",
+        "duration",
+        "provider",
+        "voice",
+        "rate",
+        "timing_method"
+      ],
+      "title": "NarrationAudio",
+      "type": "object"
+    },
+    "Scene": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "duration": {
+          "exclusiveMinimum": 0,
+          "maximum": 30,
+          "title": "Duration",
+          "type": "number"
+        },
+        "narration": {
+          "minLength": 1,
+          "title": "Narration",
+          "type": "string"
+        },
+        "subtitle": {
+          "items": {
+            "$ref": "#/$defs/Subtitle"
+          },
+          "minItems": 1,
+          "title": "Subtitle",
+          "type": "array"
+        },
+        "visual_intent": {
+          "minLength": 1,
+          "title": "Visual Intent",
+          "type": "string"
+        },
+        "asset_refs": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "title": "Asset Refs",
+          "type": "array"
+        },
+        "claim_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Claim Ids",
+          "type": "array"
+        },
+        "role": {
+          "enum": [
+            "recital",
+            "modern_moment",
+            "emotion",
+            "poem_enters",
+            "context",
+            "rereading",
+            "return_today"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "quote": {
+          "default": "",
+          "title": "Quote",
+          "type": "string"
+        },
+        "voice_offset": {
+          "default": 1.0,
+          "minimum": 0,
+          "title": "Voice Offset",
+          "type": "number"
+        },
+        "audio": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NarrationAudio"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "id",
+        "duration",
+        "narration",
+        "subtitle",
+        "visual_intent",
+        "asset_refs",
+        "role"
+      ],
+      "title": "Scene",
+      "type": "object"
+    },
+    "Subtitle": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "text"
+      ],
+      "title": "Subtitle",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "project_id": {
+      "minLength": 1,
+      "title": "Project Id",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "poem_title": {
+      "minLength": 1,
+      "title": "Poem Title",
+      "type": "string"
+    },
+    "author": {
+      "minLength": 1,
+      "title": "Author",
+      "type": "string"
+    },
+    "mode": {
+      "default": "recital",
+      "enum": [
+        "recital",
+        "essay"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "original_text": {
+      "default": "",
+      "title": "Original Text",
+      "type": "string"
+    },
+    "width": {
+      "default": 1080,
+      "maximum": 3840,
+      "minimum": 360,
+      "title": "Width",
+      "type": "integer"
+    },
+    "height": {
+      "default": 1920,
+      "maximum": 3840,
+      "minimum": 360,
+      "title": "Height",
+      "type": "integer"
+    },
+    "fps": {
+      "default": 24,
+      "maximum": 60,
+      "minimum": 12,
+      "title": "Fps",
+      "type": "integer"
+    },
+    "assets": {
+      "items": {
+        "$ref": "#/$defs/Asset"
+      },
+      "minItems": 1,
+      "title": "Assets",
+      "type": "array"
+    },
+    "scenes": {
+      "items": {
+        "$ref": "#/$defs/Scene"
+      },
+      "maxItems": 10,
+      "minItems": 6,
+      "title": "Scenes",
+      "type": "array"
+    },
+    "bgm_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bgm Path"
+    },
+    "bgm_volume": {
+      "default": 0.12,
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Bgm Volume",
+      "type": "number"
+    },
+    "bgm_start": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Bgm Start",
+      "type": "number"
+    },
+    "bgm_fade": {
+      "default": 3,
+      "minimum": 0.01,
+      "title": "Bgm Fade",
+      "type": "number"
+    },
+    "bgm_duck": {
+      "default": 0.5,
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Bgm Duck",
+      "type": "number"
+    }
+  },
+  "required": [
+    "project_id",
+    "title",
+    "poem_title",
+    "author",
+    "assets",
+    "scenes"
+  ],
+  "title": "Storyboard",
+  "type": "object"
+}

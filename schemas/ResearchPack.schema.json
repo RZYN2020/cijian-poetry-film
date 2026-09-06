@@ -1,0 +1,238 @@
+{
+  "$defs": {
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "fact",
+            "interpretation"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "confidence_note": {
+          "minLength": 1,
+          "title": "Confidence Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "kind",
+        "evidence_ids",
+        "confidence_note"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "source_id": {
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_id",
+        "quote",
+        "locator"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "creator": {
+          "minLength": 1,
+          "title": "Creator",
+          "type": "string"
+        },
+        "accessed_at": {
+          "minLength": 1,
+          "title": "Accessed At",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "primary_text",
+            "institutional_reference",
+            "scholarly_reference"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "excerpt": {
+          "minLength": 1,
+          "title": "Excerpt",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "rights_note": {
+          "minLength": 1,
+          "title": "Rights Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "creator",
+        "accessed_at",
+        "kind",
+        "excerpt",
+        "locator",
+        "rights_note"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "poem_title": {
+      "minLength": 1,
+      "title": "Poem Title",
+      "type": "string"
+    },
+    "author": {
+      "minLength": 1,
+      "title": "Author",
+      "type": "string"
+    },
+    "original_text": {
+      "minLength": 1,
+      "title": "Original Text",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "minItems": 1,
+      "title": "Evidence",
+      "type": "array"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "minItems": 1,
+      "title": "Claims",
+      "type": "array"
+    },
+    "textual_notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Textual Notes",
+      "type": "array"
+    },
+    "unknowns": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unknowns",
+      "type": "array"
+    },
+    "provenance": {
+      "minLength": 1,
+      "title": "Provenance",
+      "type": "string"
+    },
+    "review_status": {
+      "enum": [
+        "source_checked",
+        "needs_review"
+      ],
+      "title": "Review Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "poem_title",
+    "author",
+    "original_text",
+    "sources",
+    "evidence",
+    "claims",
+    "textual_notes",
+    "unknowns",
+    "provenance",
+    "review_status"
+  ],
+  "title": "ResearchPack",
+  "type": "object"
+}

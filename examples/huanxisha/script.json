@@ -6,81 +6,82 @@
   "beats": [
     {
       "id": "s01",
-      "role": "poem_enters",
+      "role": "recital",
       "narration": "一曲新词酒一杯，",
       "subtitle_lines": [
         "一曲新词酒一杯，"
       ],
       "asset_hint": "garden",
-      "visual_intent": "暮春傍晚的空园，亭台与花径，缓慢推移。",
+      "visual_intent": "一只青瓷酒杯在旧木案上，窗外暮春庭院，缓慢推近。",
       "claim_ids": [],
       "quote": "一曲新词酒一杯，",
       "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s02",
-      "role": "poem_enters",
+      "role": "recital",
       "narration": "去年天气旧亭台。",
       "subtitle_lines": [
         "去年天气旧亭台。"
       ],
       "asset_hint": "painting",
-      "visual_intent": "古画中的旧亭台与远山，轻微纸张呼吸感。",
+      "visual_intent": "从池畔看旧亭台，柳树与杏花，空旷安静。",
       "claim_ids": [],
       "quote": "去年天气旧亭台。",
       "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s03",
-      "role": "poem_enters",
+      "role": "recital",
       "narration": "夕阳西下几时回？",
       "subtitle_lines": [
         "夕阳西下几时回？"
       ],
       "asset_hint": "lake",
-      "visual_intent": "夕照落在湖面，柳丝静止后轻轻摇曳。",
+      "visual_intent": "夕阳落在远山，湖面微光，柳丝垂落。",
       "claim_ids": [],
       "quote": "夕阳西下几时回？",
       "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s04",
-      "role": "rereading",
+      "role": "recital",
       "narration": "无可奈何花落去，",
       "subtitle_lines": [
         "无可奈何花落去，"
       ],
       "asset_hint": "petals",
-      "visual_intent": "落花铺在石径，花瓣被风带过画面。",
+      "visual_intent": "近看湿润石径上的落花，旁边池水微澜。",
       "claim_ids": [],
       "quote": "无可奈何花落去，",
       "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s05",
-      "role": "rereading",
+      "role": "recital",
       "narration": "似曾相识燕归来。",
       "subtitle_lines": [
         "似曾相识燕归来。"
       ],
       "asset_hint": "swallow",
-      "visual_intent": "燕子停在旧檐，远处庭院与暮色，保持空旷。",
+      "visual_intent": "旧檐下一双燕子，一只停歇，一只归来。",
       "claim_ids": [],
       "quote": "似曾相识燕归来。",
       "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s06",
-      "role": "return_today",
+      "role": "recital",
       "narration": "小园香径独徘徊。",
       "subtitle_lines": [
         "小园香径独徘徊。"
       ],
       "asset_hint": "old-street",
-      "visual_intent": "无人的园径通向暗处，镜头缓慢后退并停住。",
+      "visual_intent": "暮色中的花径通向月洞门，空园无人。",
       "claim_ids": [],
       "quote": "小园香径独徘徊。",
       "editorial_note": "仅朗诵原词。"
     }
-  ]
+  ],
+  "mode": "recital"
 }

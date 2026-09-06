@@ -1,0 +1,245 @@
+{
+  "created_at": "2026-09-06T18:44:48.681Z",
+  "storyboard_sha256": "628431a86e1c47cafb30b16e4396419c594c29ca36f6ded951040ec07723a229",
+  "output_sha256": "f8b3e280b4a62150da1af7c712a0c05c5d38c6d537cabebe6ee2b4cd4b3999c1",
+  "expected_seconds": 54,
+  "actual_seconds": 54.058667,
+  "narration": "一曲新词酒一杯，去年天气旧亭台。夕阳西下几时回？无可奈何花落去，似曾相识燕归来。小园香径独徘徊。",
+  "tts_providers": [
+    "edge"
+  ],
+  "bgm": {
+    "id": "moonlight",
+    "kind": "audio",
+    "path": "assets/music/moonlight-scott-buckley.mp3",
+    "source": "https://www.scottbuckley.com.au/library/moonlight/",
+    "creator": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "download_url": "https://www.scottbuckley.com.au/library/wp-content/uploads/2022/07/Moonlight.mp3",
+    "sha256": "7feb8c703983dbdfc97018f004cfebad8f03b86f2382c58c0ad24e375d4c17f5",
+    "description": "Moonlight，2022-07-08；现成的钢琴与弦乐录音，怀旧、舒缓；不是古琴或模型生成的音乐。官方曲目页与署名要求已于2026-09-07核验。",
+    "object_position": "50% 50%",
+    "attribution": "'Moonlight' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au",
+    "acquired_at": "2026-09-06T18:27:46.872937+00:00",
+    "generation": null
+  },
+  "assets": [
+    {
+      "id": "generated-s01",
+      "sha256": "c41dd2984364023a2a2f33077e19dbc15d5592d6fd75bd7d54874c0edcdb6d05",
+      "generation": {
+        "provider": "OpenAI image_gen via Codex; style reference: first frame",
+        "prompt": "Vertical 9:16 full-bleed Song dynasty garden, refined hand-painted Chinese animation background. Same old pavilion, willow and apricot tree across shots. Restrained ink wash and mineral pigments, jade-grey, ivory, ink-blue, small amber dusk accents. Quiet wistful late spring. Layered depth, delicate brushwork, credible architecture. Lower middle quiet for later subtitles. No modern objects, no text, calligraphy, seals, logos, borders or watermark. 一只青瓷酒杯在旧木案上，窗外暮春庭院，缓慢推近。",
+        "created_at": "2026-09-06T18:26:26.081274+00:00",
+        "sha256": "c41dd2984364023a2a2f33077e19dbc15d5592d6fd75bd7d54874c0edcdb6d05"
+      }
+    },
+    {
+      "id": "generated-s02",
+      "sha256": "a71abd1237f8a005388be8d1bb9d62f0a58cf6bca63415e5213dbb9d279cf224",
+      "generation": {
+        "provider": "OpenAI image_gen via Codex; style reference: first frame",
+        "prompt": "Vertical 9:16 full-bleed Song dynasty garden, refined hand-painted Chinese animation background. Same old pavilion, willow and apricot tree across shots. Restrained ink wash and mineral pigments, jade-grey, ivory, ink-blue, small amber dusk accents. Quiet wistful late spring. Layered depth, delicate brushwork, credible architecture. Lower middle quiet for later subtitles. No modern objects, no text, calligraphy, seals, logos, borders or watermark. 从池畔看旧亭台，柳树与杏花，空旷安静。",
+        "created_at": "2026-09-06T18:26:26.092523+00:00",
+        "sha256": "a71abd1237f8a005388be8d1bb9d62f0a58cf6bca63415e5213dbb9d279cf224"
+      }
+    },
+    {
+      "id": "generated-s03",
+      "sha256": "abcc9868dc61d2ee412f714248821ab56d96d7fe6e0c605d750d2ffb7b2ca93e",
+      "generation": {
+        "provider": "OpenAI image_gen via Codex; style reference: first frame",
+        "prompt": "Vertical 9:16 full-bleed Song dynasty garden, refined hand-painted Chinese animation background. Same old pavilion, willow and apricot tree across shots. Restrained ink wash and mineral pigments, jade-grey, ivory, ink-blue, small amber dusk accents. Quiet wistful late spring. Layered depth, delicate brushwork, credible architecture. Lower middle quiet for later subtitles. No modern objects, no text, calligraphy, seals, logos, borders or watermark. 夕阳落在远山，湖面微光，柳丝垂落。",
+        "created_at": "2026-09-06T18:26:26.100719+00:00",
+        "sha256": "abcc9868dc61d2ee412f714248821ab56d96d7fe6e0c605d750d2ffb7b2ca93e"
+      }
+    },
+    {
+      "id": "generated-s04",
+      "sha256": "bc2ceb2e1c7dea351c4bf3db0cbc2221bbf2244121aaf8c42f69139fdef700f4",
+      "generation": {
+        "provider": "OpenAI image_gen via Codex; style reference: first frame",
+        "prompt": "Vertical 9:16 full-bleed Song dynasty garden, refined hand-painted Chinese animation background. Same old pavilion, willow and apricot tree across shots. Restrained ink wash and mineral pigments, jade-grey, ivory, ink-blue, small amber dusk accents. Quiet wistful late spring. Layered depth, delicate brushwork, credible architecture. Lower middle quiet for later subtitles. No modern objects, no text, calligraphy, seals, logos, borders or watermark. 近看湿润石径上的落花，旁边池水微澜。",
+        "created_at": "2026-09-06T18:26:26.111413+00:00",
+        "sha256": "bc2ceb2e1c7dea351c4bf3db0cbc2221bbf2244121aaf8c42f69139fdef700f4"
+      }
+    },
+    {
+      "id": "generated-s05",
+      "sha256": "0cf2368a1f8b752c9bae39cfa61ec127422f3264bfc477f4e37d1acc041bef40",
+      "generation": {
+        "provider": "OpenAI image_gen via Codex; style reference: first frame",
+        "prompt": "Vertical 9:16 full-bleed Song dynasty garden, refined hand-painted Chinese animation background. Same old pavilion, willow and apricot tree across shots. Restrained ink wash and mineral pigments, jade-grey, ivory, ink-blue, small amber dusk accents. Quiet wistful late spring. Layered depth, delicate brushwork, credible architecture. Lower middle quiet for later subtitles. No modern objects, no text, calligraphy, seals, logos, borders or watermark. 旧檐下一双燕子，一只停歇，一只归来。",
+        "created_at": "2026-09-06T18:26:26.119708+00:00",
+        "sha256": "0cf2368a1f8b752c9bae39cfa61ec127422f3264bfc477f4e37d1acc041bef40"
+      }
+    },
+    {
+      "id": "generated-s06",
+      "sha256": "9232f1a27ac3795ef640ebd799acdcaac80abac85e39eab8a2948aa251c7dd4d",
+      "generation": {
+        "provider": "OpenAI image_gen via Codex; style reference: first frame",
+        "prompt": "Vertical 9:16 full-bleed Song dynasty garden, refined hand-painted Chinese animation background. Same old pavilion, willow and apricot tree across shots. Restrained ink wash and mineral pigments, jade-grey, ivory, ink-blue, small amber dusk accents. Quiet wistful late spring. Layered depth, delicate brushwork, credible architecture. Lower middle quiet for later subtitles. No modern objects, no text, calligraphy, seals, logos, borders or watermark. 暮色中的花径通向月洞门，空园无人。",
+        "created_at": "2026-09-06T18:26:26.132736+00:00",
+        "sha256": "9232f1a27ac3795ef640ebd799acdcaac80abac85e39eab8a2948aa251c7dd4d"
+      }
+    },
+    {
+      "id": "serif",
+      "sha256": "bad9d06facb5d6d6efff2a5fa0d82c3f8221f2775aa2c84b450ff7987d59bd09",
+      "generation": null
+    },
+    {
+      "id": "moonlight",
+      "sha256": "7feb8c703983dbdfc97018f004cfebad8f03b86f2382c58c0ad24e375d4c17f5",
+      "generation": null
+    }
+  ],
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1080,
+        "height": 1920,
+        "coded_width": 1080,
+        "coded_height": 1920,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "9:16",
+        "pix_fmt": "yuvj420p",
+        "level": 40,
+        "color_range": "pc",
+        "color_space": "bt470bg",
+        "chroma_location": "center",
+        "field_order": "progressive",
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "time_base": "1/90000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 4860000,
+        "duration": "54.000000",
+        "bit_rate": "10648137",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "1296",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc61.19.100 libx264"
+        },
+        "side_data_list": [
+          {
+            "side_data_type": "ICC Profile"
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "mime_codec_string": "mp4a.40.2",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 2594816,
+        "duration": "54.058667",
+        "bit_rate": "317375",
+        "nb_frames": "2534",
+        "extradata_size": 2,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/eka/Documents/ChatGPT/词间/projects/huanxisha/.render/output.pending.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "54.058667",
+      "size": "74050081",
+      "bit_rate": "10958476",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf61.7.100",
+        "comment": "Made with Remotion 4.0.521"
+      }
+    }
+  },
+  "research_used": false,
+  "llm_used": false
+}

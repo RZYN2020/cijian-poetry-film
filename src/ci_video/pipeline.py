@@ -16,6 +16,8 @@ def normalize(text):
 
 
 def validate_script(script, research):
+    if script.mode == "recital" and normalize(''.join(b.narration for b in script.beats)) != normalize(research.original_text):
+        raise ValueError("Recital must contain the complete original poem, once, in order, with no commentary")
     ids = {c.id for c in research.claims}
     for b in script.beats:
         if not set(b.claim_ids) <= ids:
@@ -25,6 +27,16 @@ def validate_script(script, research):
         if normalize(''.join(b.subtitle_lines)) != normalize(b.narration):
             raise ValueError(f"{b.id}: subtitles must cover narration exactly")
     return script
+
+
+def validate_recital(board):
+    if board.mode != "recital":
+        return
+    if not board.original_text or normalize(''.join(s.narration for s in board.scenes)) != normalize(board.original_text):
+        raise ValueError("Recital storyboard must match original_text exactly, in order, without commentary")
+    for s in board.scenes:
+        if normalize(''.join(c.text for c in s.subtitle)) != normalize(s.narration):
+            raise ValueError(f"{s.id}: recital subtitles differ from spoken poem")
 
 
 def research(project):
@@ -45,7 +57,7 @@ def script(project):
     manifest = read(project / "project.json", ContentProject)
     pack = read(project / "research.json", ResearchPack)
     result, run = generate(project, "script", Script,
-        "你是克制的文学短片编辑。用古词说出当代人已感到却难命名的情绪。严格按 modern_moment → emotion → poem_enters → context → rereading → return_today 顺序，6~10 段，同一 role 可以连续重复。总旁白约190~225个汉字，约60秒。先写一个具体生活瞬间，不以作者生平开场。古词进入后背景最多一句。不要鸡汤、升华、营销、你是否、愿你、岁月从不、不是X而是Y。用一个动作收尾。只用证据包里可支持的事实，阅读联想显式用‘读到这里’等第一人称，不编造古人经历。quote 必须是 original_text 中完整连续片段或空串。subtitle_lines 是旁白逐字分段，每段不超过18汉字，连起来须与 narration 一致（标点可不同）。asset_hint 填已提供素材 ID，visual_intent 具体说明摄影画面和动作。claim_ids 只关联实际用到的事实或解释。provenance 写 API draft。",
+        "创作纯宋词朗诵视频的画面分镜。mode=recital，每段role=recital。narration只能是original_text的原词，按原顺序逐句分段，总共完整朗诵一遍，一字不增不减。禁止任何解释、开场白、现代生活旁白、作者生平；不要朗读作者和标题。6~10段，subtitle_lines和quote只含该段原词。visual_intent描述统一的宋代水墨动画风格、古典园林和景色，按句意从暮春过渡到夕照与空园。asset_hint用已有素材ID。claim_ids引用研究包，provenance=API draft。",
         {"brief": manifest.brief.model_dump(), "research": pack.model_dump(), "assets": read(project / "assets/manifest.json")})
     validate_script(result, pack)
     result.provenance = f"API draft; request/response: {run.relative_to(project)}"
@@ -57,7 +69,7 @@ def board(project):
     pack = read(project / "research.json", ResearchPack)
     script = validate_script(read(project / "script.json", Script), pack)
     assets = [Asset.model_validate(a) for a in read(project / "assets/manifest.json")]
-    visual_ids = [a.id for a in assets if a.kind != "font"]
+    visual_ids = [a.id for a in assets if a.kind in {"image", "video"}]
     if not visual_ids:
         raise ValueError("Provide at least one local visual asset in assets/manifest.json")
     weights = [len(normalize(b.narration)) + 4 for b in script.beats]
@@ -80,7 +92,14 @@ def board(project):
             "asset_refs": [beat.asset_hint if beat.asset_hint in visual_ids else visual_ids[i % len(visual_ids)]],
             "claim_ids": beat.claim_ids, "role": beat.role, "quote": beat.quote})
     result = Storyboard(project_id=manifest.id, title=script.title, poem_title=pack.poem_title,
-                        author=pack.author, assets=assets, scenes=scenes, bgm_path=None, bgm_volume=0.12)
+                        author=pack.author, mode=script.mode, original_text=pack.original_text,
+                        assets=assets, scenes=scenes, bgm_path=None, bgm_volume=0.12)
+    # Keep an independently selected music track when rebuilding picture timing.
+    if (project / "storyboard.json").exists():
+        old = read(project / "storyboard.json")
+        for key in ["bgm_path", "bgm_volume", "bgm_start", "bgm_fade", "bgm_duck"]:
+            if key in old:
+                setattr(result, key, old[key])
     save(project / "storyboard.json", result)
 
 
@@ -119,7 +138,13 @@ def download_assets(project):
 
 def validate_render(project):
     board = read(project / "storyboard.json", Storyboard)
+    validate_recital(board)
+    used = {ref for s in board.scenes for ref in s.asset_refs}
+    if board.bgm_path and not any(a.path == board.bgm_path and a.kind == "audio" for a in board.assets):
+        raise ValueError("BGM must be registered as an audio Asset with source/license/checksum")
     for a in board.assets:
+        if a.id not in used and a.kind != "font" and a.path != board.bgm_path:
+            continue
         p = local_file(project, a.path)
         if not p.is_file():
             raise ValueError(f"Missing asset {p}")
@@ -133,6 +158,13 @@ def validate_render(project):
         p = local_file(project, s.audio.path)
         if not p.is_file() or digest(p.read_bytes()) != s.audio.file_sha256:
             raise ValueError(f"{s.id}: audio missing/changed; run tts")
+        from .speech import duration
+        if abs(duration(p) - s.audio.duration) > 0.05:
+            raise ValueError(f"{s.id}: recorded audio duration differs from actual file")
+    if board.bgm_path:
+        from .speech import duration
+        if duration(local_file(project, board.bgm_path)) < board.bgm_start + sum(s.duration for s in board.scenes):
+            raise ValueError("Music segment too short; choose an earlier bgm_start or a longer track")
     return board
 
 
@@ -150,9 +182,7 @@ def render(project, scale=1.0, still=None):
         duration = float(metadata["format"]["duration"])
         if abs(duration - expected) > 0.2 or not any(s["codec_type"] == "audio" for s in metadata["streams"]):
             raise ValueError("render verification failed: duration/audio")
-        save(project / "render-report.json", {"created_at": now(), "storyboard_sha256": digest((project / "storyboard.json").read_bytes()),
-            "output_sha256": digest((project / "output.mp4").read_bytes()), "expected_seconds": expected,
-            "actual_seconds": duration, "probe": metadata, "research_used": False, "llm_used": False})
+        print(f"Verified MP4: {duration:.2f}s; report written by renderer")
 
 
 def init(project, brief, source_pack, assets):
