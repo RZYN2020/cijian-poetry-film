@@ -1,132 +1,86 @@
 {
   "schema_version": "1.0",
-  "title": "还认得那条路",
-  "emotional_thesis": "重游时认得景物，却无法重新成为当时与那些人一起走路的自己。",
-  "provenance": "Codex editorial fixture; human-editable demonstration, not a DeepSeek API response",
+  "title": "浣溪沙·一曲新词酒一杯",
+  "emotional_thesis": "",
+  "provenance": "Codex editorial fixture: poem-only recital; no explanation or paraphrase",
   "beats": [
     {
       "id": "s01",
-      "role": "modern_moment",
-      "narration": "暮春傍晚，你又走过旧园的花径。",
+      "role": "poem_enters",
+      "narration": "一曲新词酒一杯，",
       "subtitle_lines": [
-        "暮春傍晚，",
-        "你又走过旧园的花径。"
+        "一曲新词酒一杯，"
       ],
-      "asset_hint": "old-street",
-      "visual_intent": "街巷纵深，极慢前推。没有主角特写，留出观者自己的记忆。",
+      "asset_hint": "garden",
+      "visual_intent": "暮春傍晚的空园，亭台与花径，缓慢推移。",
       "claim_ids": [],
-      "quote": "",
-      "editorial_note": "以古代景色为叙事主体；不是晏殊传记。"
+      "quote": "一曲新词酒一杯，",
+      "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s02",
-      "role": "emotion",
-      "narration": "风过花径，脚步慢了下来。",
+      "role": "poem_enters",
+      "narration": "去年天气旧亭台。",
       "subtitle_lines": [
-        "风过花径，",
-        "脚步慢了下来。"
+        "去年天气旧亭台。"
       ],
-      "asset_hint": "rain",
-      "visual_intent": "雨将窗外景物稍稍模糊，接住停顿；不是模拟真实事件。",
+      "asset_hint": "painting",
+      "visual_intent": "古画中的旧亭台与远山，轻微纸张呼吸感。",
       "claim_ids": [],
-      "quote": "",
-      "editorial_note": "生活瞬间为创作场景，不是晏殊传记。"
+      "quote": "去年天气旧亭台。",
+      "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s03",
       "role": "poem_enters",
-      "narration": "去年天气旧亭台。原来，有些地方，一到那里，就会想起从前。",
+      "narration": "夕阳西下几时回？",
       "subtitle_lines": [
-        "去年天气旧亭台。",
-        "原来，有些地方，",
-        "一到那里，就会想起从前。"
+        "夕阳西下几时回？"
       ],
-      "asset_hint": "garden",
-      "visual_intent": "园林水边的亭台；将“去年”的感觉落到仍在眼前的建筑。",
-      "claim_ids": [
-        "c-old"
-      ],
-      "quote": "去年天气旧亭台",
-      "editorial_note": ""
+      "asset_hint": "lake",
+      "visual_intent": "夕照落在湖面，柳丝静止后轻轻摇曳。",
+      "claim_ids": [],
+      "quote": "夕阳西下几时回？",
+      "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s04",
-      "role": "context",
-      "narration": "一曲新词酒一杯，去年天气旧亭台。",
+      "role": "rereading",
+      "narration": "无可奈何花落去，",
       "subtitle_lines": [
-        "一曲新词酒一杯，",
-        "去年天气旧亭台。"
+        "无可奈何花落去，"
       ],
-      "asset_hint": "painting",
-      "visual_intent": "公版古画中的山水与夕照；背景只在此处轻轻进入。",
-      "claim_ids": [
-        "c-text",
-        "c-period",
-        "c-old"
-      ],
-      "quote": "",
-      "editorial_note": ""
+      "asset_hint": "petals",
+      "visual_intent": "落花铺在石径，花瓣被风带过画面。",
+      "claim_ids": [],
+      "quote": "无可奈何花落去，",
+      "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s05",
       "role": "rereading",
-      "narration": "无可奈何花落去，似曾相识燕归来。",
+      "narration": "似曾相识燕归来。",
       "subtitle_lines": [
-        "无可奈何花落去，",
         "似曾相识燕归来。"
       ],
-      "asset_hint": "petals",
-      "visual_intent": "落花仍停留在地面，镜头不追逐花瓣。词句完整留给声音。",
-      "claim_ids": [
-        "c-return"
-      ],
-      "quote": "无可奈何花落去，似曾相识燕归来",
-      "editorial_note": ""
+      "asset_hint": "swallow",
+      "visual_intent": "燕子停在旧檐，远处庭院与暮色，保持空旷。",
+      "claim_ids": [],
+      "quote": "似曾相识燕归来。",
+      "editorial_note": "仅朗诵原词。"
     },
     {
       "id": "s06",
-      "role": "rereading",
-      "narration": "花落去，燕归来；似曾相识，终究不是从前。",
-      "subtitle_lines": [
-        "花落去，燕归来；",
-        "似曾相识，终究不是从前。"
-      ],
-      "asset_hint": "swallow",
-      "visual_intent": "家燕静静停栖，不做飞行的拟真动画；微小后移。",
-      "claim_ids": [
-        "c-return"
-      ],
-      "quote": "",
-      "editorial_note": ""
-    },
-    {
-      "id": "s07",
-      "role": "return_today",
-      "narration": "夕阳西下几时回？",
-      "subtitle_lines": [
-        "夕阳西下，",
-        "几时回？"
-      ],
-      "asset_hint": "lake",
-      "visual_intent": "夕照落在湖面，让“各自走远”留在平静而空旷的画面里。",
-      "claim_ids": [],
-      "quote": "",
-      "editorial_note": "生活瞬间为创作场景，不是晏殊传记。"
-    },
-    {
-      "id": "s08",
       "role": "return_today",
       "narration": "小园香径独徘徊。",
       "subtitle_lines": [
         "小园香径独徘徊。"
       ],
       "asset_hint": "old-street",
-      "visual_intent": "回到开头同一张街巷照片，用不同裁剪和后移暗示今日；路灯不在画内，只存在于旁白。",
-      "claim_ids": [
-        "c-end"
-      ],
-      "quote": "小园香径独徘徊",
-      "editorial_note": ""
+      "visual_intent": "无人的园径通向暗处，镜头缓慢后退并停住。",
+      "claim_ids": [],
+      "quote": "小园香径独徘徊。",
+      "editorial_note": "仅朗诵原词。"
     }
   ]
 }
