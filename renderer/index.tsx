@@ -78,6 +78,7 @@ const Film: React.FC<Props> = ({board}) => {
         <Shot scene={scene} asset={assets.get(scene.asset_refs[0])!} index={index} count={board.scenes.length} board={board} />
       </Sequence>;
     })}
+    {board.bgm_path ? <Audio src={staticFile(board.bgm_path)} volume={board.bgm_volume ?? 0.12} loop /> : null}
   </AbsoluteFill>;
 };
 

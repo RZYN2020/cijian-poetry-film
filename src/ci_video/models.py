@@ -192,6 +192,8 @@ class Storyboard(Model):
     fps: int = Field(default=24, ge=12, le=60)
     assets: list[Asset] = Field(min_length=1)
     scenes: list[Scene] = Field(min_length=6, max_length=10)
+    bgm_path: str | None = None
+    bgm_volume: float = Field(default=0.12, ge=0, le=1)
 
     @model_validator(mode="after")
     def references(self):

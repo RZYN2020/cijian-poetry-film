@@ -423,5 +423,7 @@
         "timing_method": "estimated"
       }
     }
-  ]
+  ],
+  "bgm_path": null,
+  "bgm_volume": 0.12
 }

@@ -12,5 +12,6 @@ export type Board = {
   title: string; poem_title: string; author: string;
   width: number; height: number; fps: number;
   scenes: Scene[]; assets: Asset[];
+  bgm_path?: string | null; bgm_volume?: number;
 };
 export type Props = {board: Board};
