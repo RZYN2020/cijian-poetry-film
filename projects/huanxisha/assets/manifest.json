@@ -89,5 +89,17 @@
     "sha256": "e49bd75c013fb63f86a8f1f509fb7dd6a8cb09e8aaa2f4e4434184241725363c",
     "description": "家燕停栖，作为燕归意象",
     "object_position": "50% 50%"
+  },
+  {
+    "id": "bgm",
+    "kind": "audio",
+    "path": "audio/bgm.wav",
+    "source": "Generated locally with FFmpeg sine synthesis",
+    "creator": "CiJian pipeline",
+    "license": "CC0-like generated asset; replace with licensed music when available",
+    "license_url": "",
+    "download_url": "",
+    "sha256": "f80d1a6fbc93f2b441adc99db3b708b17b34d3da6fd11109c4a5a543bb398f7e",
+    "description": "Soft ambient two-tone BGM; 52.12 seconds"
   }
 ]

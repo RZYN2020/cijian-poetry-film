@@ -17,7 +17,7 @@ const inputProps = {board};
 const staging = path.join(project, '.render');
 const publicDir = path.join(staging, 'public');
 await fs.mkdir(publicDir, {recursive:true});
-const relativeFiles = [...board.assets.map(a=>a.path), ...board.scenes.map(s=>s.audio.path)];
+const relativeFiles = [...board.assets.map(a=>a.path), ...board.scenes.map(s=>s.audio.path), ...(board.bgm_path ? [board.bgm_path] : [])];
 for (const file of new Set(relativeFiles)) {
   const to = path.join(publicDir, file);
   await fs.mkdir(path.dirname(to), {recursive:true});

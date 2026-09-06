@@ -222,6 +222,6 @@
       "audio": null
     }
   ],
-  "bgm_path": null,
-  "bgm_volume": 0.12
+  "bgm_path": "audio/bgm.wav",
+  "bgm_volume": 0.32
 }
