@@ -103,12 +103,12 @@
   "scenes": [
     {
       "id": "s01",
-      "duration": 10.0,
+      "duration": 2.5833333333333335,
       "narration": "一曲新词酒一杯，",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 9.549999999999999,
+          "end": 1.920884,
           "text": "一曲新词酒一杯，"
         }
       ],
@@ -119,16 +119,26 @@
       "claim_ids": [],
       "role": "poem_enters",
       "quote": "一曲新词酒一杯，",
-      "audio": null
+      "audio": {
+        "path": "audio/4bf22c69dbb65c127d361686.wav",
+        "text_sha256": "805ecc280f21c40eba7ef237dc31814d953f83a61b7358b9d8fdb606120379b7",
+        "file_sha256": "d2ee114ff652653501241902ec510929d06061b07759013e17ddca1fcee6c080",
+        "duration": 1.570884,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s02",
-      "duration": 10.0,
+      "duration": 2.9166666666666665,
       "narration": "去年天气旧亭台。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 9.549999999999999,
+          "end": 2.249229,
           "text": "去年天气旧亭台。"
         }
       ],
@@ -139,16 +149,26 @@
       "claim_ids": [],
       "role": "poem_enters",
       "quote": "去年天气旧亭台。",
-      "audio": null
+      "audio": {
+        "path": "audio/5e9ddfe97da15fc309057397.wav",
+        "text_sha256": "dcf3c018972434b02b6788cadc7b8fa554085379302e824971fd7809030a3ef2",
+        "file_sha256": "6fb31da7ffbc268461a3cdfff4c8ea60795c2b79dead062fc346ad4173b21821",
+        "duration": 1.899229,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s03",
-      "duration": 10.0,
+      "duration": 2.75,
       "narration": "夕阳西下几时回？",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 9.549999999999999,
+          "end": 2.059342,
           "text": "夕阳西下几时回？"
         }
       ],
@@ -159,16 +179,26 @@
       "claim_ids": [],
       "role": "poem_enters",
       "quote": "夕阳西下几时回？",
-      "audio": null
+      "audio": {
+        "path": "audio/8fb5b4d51f35fa2b18e469e1.wav",
+        "text_sha256": "5abe287afcfcc0bef2485f06ba437ce364ecefbf0424e6c2f41abec313365da4",
+        "file_sha256": "e1397bcd88e50c80bbfe6a50357f8ce137f4afbc7aa93f90a5d01ee32432c936",
+        "duration": 1.709342,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s04",
-      "duration": 10.0,
+      "duration": 2.625,
       "narration": "无可奈何花落去，",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 9.549999999999999,
+          "end": 1.944376,
           "text": "无可奈何花落去，"
         }
       ],
@@ -179,16 +209,26 @@
       "claim_ids": [],
       "role": "rereading",
       "quote": "无可奈何花落去，",
-      "audio": null
+      "audio": {
+        "path": "audio/92a4c925fb67ecc19eb74e3b.wav",
+        "text_sha256": "ef593b23ee7f18adb81232b6c362daf745f68e1e042aba2fa342de1e170c5cbb",
+        "file_sha256": "f47f5b3d5704a024b69e2e9b4a41b9758cf7bff3d73d7c8cd30d53b50c436528",
+        "duration": 1.594376,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s05",
-      "duration": 10.0,
+      "duration": 2.7916666666666665,
       "narration": "似曾相识燕归来。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 9.549999999999999,
+          "end": 2.128186,
           "text": "似曾相识燕归来。"
         }
       ],
@@ -199,16 +239,26 @@
       "claim_ids": [],
       "role": "rereading",
       "quote": "似曾相识燕归来。",
-      "audio": null
+      "audio": {
+        "path": "audio/26f0f4d0a6c5db590be22bf9.wav",
+        "text_sha256": "db1b88cd2daf2bb08f97cc57ec630d9e5a54dd6f14279c21c72a552e30e4b74b",
+        "file_sha256": "0973994503cebbabd2cb958a2800ed81b33ae27a85879b1f965c10fc2b56e843",
+        "duration": 1.778186,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s06",
-      "duration": 10.0,
+      "duration": 3.0,
       "narration": "小园香径独徘徊。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 9.549999999999999,
+          "end": 2.326372,
           "text": "小园香径独徘徊。"
         }
       ],
@@ -219,7 +269,17 @@
       "claim_ids": [],
       "role": "return_today",
       "quote": "小园香径独徘徊。",
-      "audio": null
+      "audio": {
+        "path": "audio/89c80f214a21265ce549c779.wav",
+        "text_sha256": "4c6f65b7d8c37c1de6dd36df120e4545f5466aae40e59beba89ae9db809b7bdf",
+        "file_sha256": "12a33004a41a3df5e2ce5e5fee6608de173f19344d450c4f01077508a112caec",
+        "duration": 1.976372,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     }
   ],
   "bgm_path": "audio/bgm.wav",
