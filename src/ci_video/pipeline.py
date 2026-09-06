@@ -80,7 +80,7 @@ def board(project):
             "asset_refs": [beat.asset_hint if beat.asset_hint in visual_ids else visual_ids[i % len(visual_ids)]],
             "claim_ids": beat.claim_ids, "role": beat.role, "quote": beat.quote})
     result = Storyboard(project_id=manifest.id, title=script.title, poem_title=pack.poem_title,
-                        author=pack.author, assets=assets, scenes=scenes)
+                        author=pack.author, assets=assets, scenes=scenes, bgm_path=None, bgm_volume=0.12)
     save(project / "storyboard.json", result)
 
 
