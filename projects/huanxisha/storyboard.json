@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.0",
+  "project_id": "huanxisha",
+  "title": "还认得那条路",
+  "poem_title": "浣溪沙·一曲新词酒一杯",
+  "author": "晏殊",
+  "width": 1080,
+  "height": 1920,
+  "fps": 24,
+  "assets": [
+    {
+      "id": "old-street",
+      "kind": "image",
+      "path": "assets/old-street.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Peking_Gasse-20131231-RM-112910.jpg",
+      "creator": "Ermell",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Peking_Gasse-20131231-RM-112910.jpg/1920px-Peking_Gasse-20131231-RM-112910.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "aacd57943addbf41d7778c047220223a97f25d9a096f2e34190f149b4c382102",
+      "description": "北京街巷，作为记忆中的道路意象，不声称是具体故乡",
+      "object_position": "50% 50%"
+    },
+    {
+      "id": "rain",
+      "kind": "image",
+      "path": "assets/rain.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Heavy_rain_spray_(5932909963).jpg",
+      "creator": "Chris Hearn from Narberth, UK",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Heavy_rain_spray_%285932909963%29.jpg/1920px-Heavy_rain_spray_%285932909963%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "4fb06cf31d13beffa7a516e257f74a19e12cdf8149b50e0619ec5798db950b1e",
+      "description": "雨中窗外的模糊景物",
+      "object_position": "50% 50%"
+    },
+    {
+      "id": "lake",
+      "kind": "image",
+      "path": "assets/lake.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:%C2%B7%CB%99%C2%B7ChinaUli2010%C2%B7.%C2%B7_Hangzhou_-_romantic_sunset_at_the_Westlake_-_panoramio_(10).jpg",
+      "creator": "·˙·ChinaUli2010·.·",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/%C2%B7%CB%99%C2%B7ChinaUli2010%C2%B7.%C2%B7_Hangzhou_-_romantic_sunset_at_the_Westlake_-_panoramio_%2810%29.jpg/1920px-%C2%B7%CB%99%C2%B7ChinaUli2010%C2%B7.%C2%B7_Hangzhou_-_romantic_sunset_at_the_Westlake_-_panoramio_%2810%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "01fe7a744e1c296bafa06eda66ed1cb9c939996a904d74190f7d5756c2503adc",
+      "description": "西湖夕照，水面与黄昏",
+      "object_position": "50% 50%"
+    },
+    {
+      "id": "painting",
+      "kind": "image",
+      "path": "assets/painting.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:%E5%AE%8B_%E8%91%89%E8%82%96%E5%B7%96_%E8%A5%BF%E6%B9%96%E5%8D%81%E6%99%AF%E5%9C%96_%E9%9B%B7%E5%B3%B0%E5%A4%95%E7%85%A7.jpg",
+      "creator": "Ye Xiaoyan, a Chinese painter active in the early 13th century",
+      "license": "Public domain",
+      "license_url": "",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/%E5%AE%8B_%E8%91%89%E8%82%96%E5%B7%96_%E8%A5%BF%E6%B9%96%E5%8D%81%E6%99%AF%E5%9C%96_%E9%9B%B7%E5%B3%B0%E5%A4%95%E7%85%A7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sha256": "4ace728b2df7053ef74f657807a574bb122e994c740edeb9bd782f2ee15b7185",
+      "description": "宋代叶肖岩《西湖十景图·雷峰夕照》，作为古典意象，不是晏殊居所",
+      "object_position": "50% 50%"
+    },
+    {
+      "id": "petals",
+      "kind": "image",
+      "path": "assets/petals.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Prunus_en_fleurs_au_parc_de_l%27Aulnaye_(p%C3%A9tales_tomb%C3%A9s).jpg",
+      "creator": "Tangopaso",
+      "license": "Public domain",
+      "license_url": "",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Prunus_en_fleurs_au_parc_de_l%27Aulnaye_%28p%C3%A9tales_tomb%C3%A9s%29.jpg/1920px-Prunus_en_fleurs_au_parc_de_l%27Aulnaye_%28p%C3%A9tales_tomb%C3%A9s%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "9a25752dce7e5f7e8049c3dccf1fc00371c1fb6acb9d67b2e1a54e8ecff2a70a",
+      "description": "樱花树下落花",
+      "object_position": "50% 50%"
+    },
+    {
+      "id": "garden",
+      "kind": "image",
+      "path": "assets/garden.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%B0%D0%B4_%D1%81%D0%BA%D1%80%D0%BE%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D1%87%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA%D0%B0_(Zhuozheng_Yuan)_(30156471140).jpg",
+      "creator": "Михаил Лазарев",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/%D0%A1%D0%B0%D0%B4_%D1%81%D0%BA%D1%80%D0%BE%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D1%87%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA%D0%B0_%28Zhuozheng_Yuan%29_%2830156471140%29.jpg/1920px-%D0%A1%D0%B0%D0%B4_%D1%81%D0%BA%D1%80%D0%BE%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D1%87%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA%D0%B0_%28Zhuozheng_Yuan%29_%2830156471140%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "1aa2340497461da16f5b95097efaa89bc2d89ff3c93b2d9369fd35bd93bdc44c",
+      "description": "苏州拙政园，作为亭台园径意象",
+      "object_position": "50% 50%"
+    },
+    {
+      "id": "swallow",
+      "kind": "image",
+      "path": "assets/swallow.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Andorinha-das-chamin%C3%A9s_20230407_Estu%C3%A1rio_do_Douro_1.jpg",
+      "creator": "FVBGil",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Andorinha-das-chamin%C3%A9s_20230407_Estu%C3%A1rio_do_Douro_1.jpg/1920px-Andorinha-das-chamin%C3%A9s_20230407_Estu%C3%A1rio_do_Douro_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "e49bd75c013fb63f86a8f1f509fb7dd6a8cb09e8aaa2f4e4434184241725363c",
+      "description": "家燕停栖，作为燕归意象",
+      "object_position": "50% 50%"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s01",
+      "duration": 6.041666666666667,
+      "narration": "很多年后，你又经过放学时走的那条路。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 1.6604166666666669,
+          "text": "很多年后，"
+        },
+        {
+          "start": 1.6604166666666669,
+          "end": 5.591666666666667,
+          "text": "你又经过放学时走的那条路。"
+        }
+      ],
+      "visual_intent": "街巷纵深，极慢前推。没有主角特写，留出观者自己的记忆。",
+      "asset_refs": [
+        "old-street"
+      ],
+      "claim_ids": [],
+      "role": "modern_moment",
+      "quote": "",
+      "audio": null
+    },
+    {
+      "id": "s02",
+      "duration": 6.041666666666667,
+      "narration": "店招换了。拐角还在。你下意识慢了半步。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 2.9708333333333337,
+          "text": "店招换了。拐角还在。"
+        },
+        {
+          "start": 2.9708333333333337,
+          "end": 5.591666666666667,
+          "text": "你下意识慢了半步。"
+        }
+      ],
+      "visual_intent": "雨将窗外景物稍稍模糊，接住停顿；不是模拟真实事件。",
+      "asset_refs": [
+        "rain"
+      ],
+      "claim_ids": [],
+      "role": "emotion",
+      "quote": "",
+      "audio": null
+    },
+    {
+      "id": "s03",
+      "duration": 8.125,
+      "narration": "去年天气旧亭台。原来，有些地方，一到那里，就会想起从前。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 2.5793478260869565,
+          "text": "去年天气旧亭台。"
+        },
+        {
+          "start": 2.5793478260869565,
+          "end": 4.490217391304348,
+          "text": "原来，有些地方，"
+        },
+        {
+          "start": 4.490217391304348,
+          "end": 7.675000000000001,
+          "text": "一到那里，就会想起从前。"
+        }
+      ],
+      "visual_intent": "园林水边的亭台；将“去年”的感觉落到仍在眼前的建筑。",
+      "asset_refs": [
+        "garden"
+      ],
+      "claim_ids": [
+        "c-old"
+      ],
+      "role": "poem_enters",
+      "quote": "去年天气旧亭台",
+      "audio": null
+    },
+    {
+      "id": "s04",
+      "duration": 9.666666666666666,
+      "narration": "北宋的晏殊，把这种恍惚写进《浣溪沙》。一曲新词，一杯酒，亭台却是旧的。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 1.9333333333333331,
+          "text": "北宋的晏殊，"
+        },
+        {
+          "start": 1.9333333333333331,
+          "end": 5.1,
+          "text": "把这种恍惚写进《浣溪沙》。"
+        },
+        {
+          "start": 5.1,
+          "end": 7.316666666666666,
+          "text": "一曲新词，一杯酒，"
+        },
+        {
+          "start": 7.316666666666666,
+          "end": 9.216666666666667,
+          "text": "亭台却是旧的。"
+        }
+      ],
+      "visual_intent": "公版古画中的山水与夕照；背景只在此处轻轻进入。",
+      "asset_refs": [
+        "painting"
+      ],
+      "claim_ids": [
+        "c-text",
+        "c-period",
+        "c-old"
+      ],
+      "role": "context",
+      "quote": "",
+      "audio": null
+    },
+    {
+      "id": "s05",
+      "duration": 5.416666666666667,
+      "narration": "无可奈何花落去，似曾相识燕归来。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 2.6583333333333337,
+          "text": "无可奈何花落去，"
+        },
+        {
+          "start": 2.6583333333333337,
+          "end": 4.966666666666667,
+          "text": "似曾相识燕归来。"
+        }
+      ],
+      "visual_intent": "落花仍停留在地面，镜头不追逐花瓣。词句完整留给声音。",
+      "asset_refs": [
+        "petals"
+      ],
+      "claim_ids": [
+        "c-return"
+      ],
+      "role": "rereading",
+      "quote": "无可奈何花落去，似曾相识燕归来",
+      "audio": null
+    },
+    {
+      "id": "s06",
+      "duration": 7.541666666666667,
+      "narration": "花落了，燕子又回来了。“似曾相识”，终究隔着一个“似”字。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 3.2392857142857148,
+          "text": "花落了，燕子又回来了。"
+        },
+        {
+          "start": 3.2392857142857148,
+          "end": 4.523412698412699,
+          "text": "“似曾相识”，"
+        },
+        {
+          "start": 4.523412698412699,
+          "end": 7.091666666666667,
+          "text": "终究隔着一个“似”字。"
+        }
+      ],
+      "visual_intent": "家燕静静停栖，不做飞行的拟真动画；微小后移。",
+      "asset_refs": [
+        "swallow"
+      ],
+      "claim_ids": [
+        "c-return"
+      ],
+      "role": "rereading",
+      "quote": "",
+      "audio": null
+    },
+    {
+      "id": "s07",
+      "duration": 9.041666666666666,
+      "narration": "读到这里，我想起那条老路。路还认得，身边的人，却已经各自走远。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 3.836858974358974,
+          "text": "读到这里，我想起那条老路。"
+        },
+        {
+          "start": 3.836858974358974,
+          "end": 6.372756410256409,
+          "text": "路还认得，身边的人，"
+        },
+        {
+          "start": 6.372756410256409,
+          "end": 8.591666666666665,
+          "text": "却已经各自走远。"
+        }
+      ],
+      "visual_intent": "夕照落在湖面，让“各自走远”留在平静而空旷的画面里。",
+      "asset_refs": [
+        "lake"
+      ],
+      "claim_ids": [],
+      "role": "return_today",
+      "quote": "",
+      "audio": null
+    },
+    {
+      "id": "s08",
+      "duration": 8.125,
+      "narration": "小园香径独徘徊。你在路口站了一会儿，等这一盏灯变绿。",
+      "subtitle": [
+        {
+          "start": 0.35,
+          "end": 2.5793478260869565,
+          "text": "小园香径独徘徊。"
+        },
+        {
+          "start": 2.5793478260869565,
+          "end": 5.445652173913043,
+          "text": "你在路口站了一会儿，"
+        },
+        {
+          "start": 5.445652173913043,
+          "end": 7.674999999999999,
+          "text": "等这一盏灯变绿。"
+        }
+      ],
+      "visual_intent": "回到开头同一张街巷照片，用不同裁剪和后移暗示今日；路灯不在画内，只存在于旁白。",
+      "asset_refs": [
+        "old-street"
+      ],
+      "claim_ids": [
+        "c-end"
+      ],
+      "role": "return_today",
+      "quote": "小园香径独徘徊",
+      "audio": null
+    }
+  ]
+}

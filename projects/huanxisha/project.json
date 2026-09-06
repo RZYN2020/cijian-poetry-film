@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "id": "huanxisha",
+  "brief": {
+    "poem_title": "浣溪沙·一曲新词酒一杯",
+    "author": "晏殊",
+    "poem_text": "一曲新词酒一杯，去年天气旧亭台。夕阳西下几时回？\n无可奈何花落去，似曾相识燕归来。小园香径独徘徊。",
+    "emotion": "故地重游，地方还认得，已经无法回到一起走过那条路的从前",
+    "modern_moment": "多年后路过放学时走的老街，在拐角放慢脚步，最后站在路口等灯。",
+    "target_seconds": 60.0,
+    "tone": [
+      "克制",
+      "安静",
+      "含蓄",
+      "有记忆感"
+    ],
+    "avoid": [
+      "鸡汤",
+      "营销",
+      "过度煽情",
+      "作者介绍开场",
+      "虚构作者生平"
+    ]
+  },
+  "research": "research.json",
+  "script": "script.json",
+  "storyboard": "storyboard.json",
+  "output": "output.mp4",
+  "created_at": "2026-09-06T12:15:12.567536+00:00"
+}

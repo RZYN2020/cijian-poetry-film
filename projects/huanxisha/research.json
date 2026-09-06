@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "poem_title": "浣溪沙·一曲新词酒一杯",
+  "author": "晏殊",
+  "original_text": "一曲新词酒一杯，去年天气旧亭台。夕阳西下几时回？\n无可奈何花落去，似曾相识燕归来。小园香径独徘徊。",
+  "sources": [
+    {
+      "id": "s-text",
+      "title": "浣溪沙·一曲新词酒一杯（原词）",
+      "url": "https://m.gushiwen.cn/shiwenv_eda29e11ff49.aspx",
+      "creator": "晏殊；古文岛（原古诗文网）录入",
+      "accessed_at": "2026-09-06",
+      "kind": "primary_text",
+      "excerpt": "一曲新词酒一杯，去年天气旧亭台。夕阳西下几时回？\n无可奈何花落去，似曾相识燕归来。小园香径独徘徊。",
+      "locator": "页面标题下，原词两行",
+      "rights_note": "晏殊原词为公版；不复制网页现代译文与赏析。"
+    },
+    {
+      "id": "s-edb",
+      "title": "《积学与涵泳——中学古诗文诵读材料选编》编号54《浣溪沙》",
+      "url": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/secondary-edu/lang/chi_chapter/P054.pdf",
+      "creator": "香港特别行政区教育局",
+      "accessed_at": "2026-09-06",
+      "kind": "institutional_reference",
+      "excerpt": "一曲新詞酒一杯，去年天氣舊亭臺。夕陽西下幾時迴？無可奈何花落去，似曾相識燕歸來。小園香徑獨徘徊。\n晏殊（公元991–1055）\n在北宋詞壇有着重要地位。\n香徑：花園中的道路。\n這是一首傷春懷舊的詞，全篇在新與舊、過去與現在的對比中展開。",
+      "locator": "PDF 第1页：原词、作者简介、注释及赏析重点；摘录空白与排版已规范化",
+      "rights_note": "只保存原词与核验所需短引；现代教学文字不作开放许可假设。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e-text",
+      "source_id": "s-text",
+      "quote": "一曲新词酒一杯，去年天气旧亭台。夕阳西下几时回？\n无可奈何花落去，似曾相识燕归来。小园香径独徘徊。",
+      "locator": "原词全文"
+    },
+    {
+      "id": "e-old",
+      "source_id": "s-text",
+      "quote": "去年天气旧亭台",
+      "locator": "上片第二句"
+    },
+    {
+      "id": "e-return",
+      "source_id": "s-text",
+      "quote": "无可奈何花落去，似曾相识燕归来",
+      "locator": "下片第一、二句"
+    },
+    {
+      "id": "e-path",
+      "source_id": "s-text",
+      "quote": "小园香径独徘徊",
+      "locator": "末句"
+    },
+    {
+      "id": "e-song",
+      "source_id": "s-edb",
+      "quote": "在北宋詞壇有着重要地位。",
+      "locator": "PDF第1页作者简介"
+    },
+    {
+      "id": "e-read",
+      "source_id": "s-edb",
+      "quote": "全篇在新與舊、過去與現在的對比中展開。",
+      "locator": "PDF第1页赏析重点"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c-text",
+      "text": "本片所引原词为晏殊《浣溪沙·一曲新词酒一杯》，原词由两个来源互校。",
+      "kind": "fact",
+      "evidence_ids": [
+        "e-text"
+      ],
+      "confidence_note": "原词相符；教育局使用繁体字及“迴”，本片规范化为简体“回”。"
+    },
+    {
+      "id": "c-period",
+      "text": "晏殊是北宋词人。",
+      "kind": "fact",
+      "evidence_ids": [
+        "e-song"
+      ],
+      "confidence_note": "机构教学资料支持；片中不扩展具体写作年月与场所。"
+    },
+    {
+      "id": "c-old",
+      "text": "“去年”与“旧亭台”把眼前景物同过去重叠起来。",
+      "kind": "interpretation",
+      "evidence_ids": [
+        "e-old",
+        "e-read"
+      ],
+      "confidence_note": "文本支持的阅读；不推出作者某次具体重游经历。"
+    },
+    {
+      "id": "c-return",
+      "text": "花落与燕归并置；相似的景象重现，并不意味着过去的经历可以原样回来。",
+      "kind": "interpretation",
+      "evidence_ids": [
+        "e-return",
+        "e-read"
+      ],
+      "confidence_note": "本片的当代阐释，不作为唯一标准答案。"
+    },
+    {
+      "id": "c-end",
+      "text": "词以独自在小园花径徘徊的动作收束。",
+      "kind": "fact",
+      "evidence_ids": [
+        "e-path"
+      ],
+      "confidence_note": "对末句的直接描述；不虚构徘徊对象。"
+    }
+  ],
+  "textual_notes": [
+    "教育局本“迴”与简体通行本“回”在本片统一作“回”。",
+    "标点为现代整理；不朗读额外标点或古籍异体字。"
+  ],
+  "unknowns": [
+    "未核实具体创作年月，片中不使用1027年说。",
+    "不推断具体怀念对象、宴会参与者或晏殊的真实故地。",
+    "画面均为意象，不是诗词写作现场的史料。"
+  ],
+  "provenance": "Codex assisted source checking and editorial curation; not a DeepSeek API response",
+  "review_status": "source_checked"
+}

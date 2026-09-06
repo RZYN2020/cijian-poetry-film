@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "title": "还认得那条路",
+  "emotional_thesis": "重游时认得景物，却无法重新成为当时与那些人一起走路的自己。",
+  "provenance": "Codex editorial fixture; human-editable demonstration, not a DeepSeek API response",
+  "beats": [
+    {
+      "id": "s01",
+      "role": "modern_moment",
+      "narration": "很多年后，你又经过放学时走的那条路。",
+      "subtitle_lines": [
+        "很多年后，",
+        "你又经过放学时走的那条路。"
+      ],
+      "visual_intent": "街巷纵深，极慢前推。没有主角特写，留出观者自己的记忆。",
+      "asset_hint": "old-street",
+      "claim_ids": [],
+      "quote": "",
+      "editorial_note": "生活瞬间为创作场景，不是晏殊传记。"
+    },
+    {
+      "id": "s02",
+      "role": "emotion",
+      "narration": "店招换了。拐角还在。你下意识慢了半步。",
+      "subtitle_lines": [
+        "店招换了。拐角还在。",
+        "你下意识慢了半步。"
+      ],
+      "visual_intent": "雨将窗外景物稍稍模糊，接住停顿；不是模拟真实事件。",
+      "asset_hint": "rain",
+      "claim_ids": [],
+      "quote": "",
+      "editorial_note": "生活瞬间为创作场景，不是晏殊传记。"
+    },
+    {
+      "id": "s03",
+      "role": "poem_enters",
+      "narration": "去年天气旧亭台。原来，有些地方，一到那里，就会想起从前。",
+      "subtitle_lines": [
+        "去年天气旧亭台。",
+        "原来，有些地方，",
+        "一到那里，就会想起从前。"
+      ],
+      "visual_intent": "园林水边的亭台；将“去年”的感觉落到仍在眼前的建筑。",
+      "asset_hint": "garden",
+      "claim_ids": [
+        "c-old"
+      ],
+      "quote": "去年天气旧亭台",
+      "editorial_note": ""
+    },
+    {
+      "id": "s04",
+      "role": "context",
+      "narration": "北宋的晏殊，把这种恍惚写进《浣溪沙》。一曲新词，一杯酒，亭台却是旧的。",
+      "subtitle_lines": [
+        "北宋的晏殊，",
+        "把这种恍惚写进《浣溪沙》。",
+        "一曲新词，一杯酒，",
+        "亭台却是旧的。"
+      ],
+      "visual_intent": "公版古画中的山水与夕照；背景只在此处轻轻进入。",
+      "asset_hint": "painting",
+      "claim_ids": [
+        "c-text",
+        "c-period",
+        "c-old"
+      ],
+      "quote": "",
+      "editorial_note": ""
+    },
+    {
+      "id": "s05",
+      "role": "rereading",
+      "narration": "无可奈何花落去，似曾相识燕归来。",
+      "subtitle_lines": [
+        "无可奈何花落去，",
+        "似曾相识燕归来。"
+      ],
+      "visual_intent": "落花仍停留在地面，镜头不追逐花瓣。词句完整留给声音。",
+      "asset_hint": "petals",
+      "claim_ids": [
+        "c-return"
+      ],
+      "quote": "无可奈何花落去，似曾相识燕归来",
+      "editorial_note": ""
+    },
+    {
+      "id": "s06",
+      "role": "rereading",
+      "narration": "花落了，燕子又回来了。“似曾相识”，终究隔着一个“似”字。",
+      "subtitle_lines": [
+        "花落了，燕子又回来了。",
+        "“似曾相识”，",
+        "终究隔着一个“似”字。"
+      ],
+      "visual_intent": "家燕静静停栖，不做飞行的拟真动画；微小后移。",
+      "asset_hint": "swallow",
+      "claim_ids": [
+        "c-return"
+      ],
+      "quote": "",
+      "editorial_note": ""
+    },
+    {
+      "id": "s07",
+      "role": "return_today",
+      "narration": "读到这里，我想起那条老路。路还认得，身边的人，却已经各自走远。",
+      "subtitle_lines": [
+        "读到这里，我想起那条老路。",
+        "路还认得，身边的人，",
+        "却已经各自走远。"
+      ],
+      "visual_intent": "夕照落在湖面，让“各自走远”留在平静而空旷的画面里。",
+      "asset_hint": "lake",
+      "claim_ids": [],
+      "quote": "",
+      "editorial_note": "生活瞬间为创作场景，不是晏殊传记。"
+    },
+    {
+      "id": "s08",
+      "role": "return_today",
+      "narration": "小园香径独徘徊。你在路口站了一会儿，等这一盏灯变绿。",
+      "subtitle_lines": [
+        "小园香径独徘徊。",
+        "你在路口站了一会儿，",
+        "等这一盏灯变绿。"
+      ],
+      "visual_intent": "回到开头同一张街巷照片，用不同裁剪和后移暗示今日；路灯不在画内，只存在于旁白。",
+      "asset_hint": "old-street",
+      "claim_ids": [
+        "c-end"
+      ],
+      "quote": "小园香径独徘徊",
+      "editorial_note": ""
+    }
+  ]
+}

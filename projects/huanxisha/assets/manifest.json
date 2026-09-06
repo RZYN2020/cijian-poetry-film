@@ -1,0 +1,93 @@
+[
+  {
+    "id": "old-street",
+    "kind": "image",
+    "path": "assets/old-street.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Peking_Gasse-20131231-RM-112910.jpg",
+    "creator": "Ermell",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Peking_Gasse-20131231-RM-112910.jpg/1920px-Peking_Gasse-20131231-RM-112910.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sha256": "aacd57943addbf41d7778c047220223a97f25d9a096f2e34190f149b4c382102",
+    "description": "北京街巷，作为记忆中的道路意象，不声称是具体故乡",
+    "object_position": "50% 50%"
+  },
+  {
+    "id": "rain",
+    "kind": "image",
+    "path": "assets/rain.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Heavy_rain_spray_(5932909963).jpg",
+    "creator": "Chris Hearn from Narberth, UK",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Heavy_rain_spray_%285932909963%29.jpg/1920px-Heavy_rain_spray_%285932909963%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sha256": "4fb06cf31d13beffa7a516e257f74a19e12cdf8149b50e0619ec5798db950b1e",
+    "description": "雨中窗外的模糊景物",
+    "object_position": "50% 50%"
+  },
+  {
+    "id": "lake",
+    "kind": "image",
+    "path": "assets/lake.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:%C2%B7%CB%99%C2%B7ChinaUli2010%C2%B7.%C2%B7_Hangzhou_-_romantic_sunset_at_the_Westlake_-_panoramio_(10).jpg",
+    "creator": "·˙·ChinaUli2010·.·",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/%C2%B7%CB%99%C2%B7ChinaUli2010%C2%B7.%C2%B7_Hangzhou_-_romantic_sunset_at_the_Westlake_-_panoramio_%2810%29.jpg/1920px-%C2%B7%CB%99%C2%B7ChinaUli2010%C2%B7.%C2%B7_Hangzhou_-_romantic_sunset_at_the_Westlake_-_panoramio_%2810%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sha256": "01fe7a744e1c296bafa06eda66ed1cb9c939996a904d74190f7d5756c2503adc",
+    "description": "西湖夕照，水面与黄昏",
+    "object_position": "50% 50%"
+  },
+  {
+    "id": "painting",
+    "kind": "image",
+    "path": "assets/painting.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:%E5%AE%8B_%E8%91%89%E8%82%96%E5%B7%96_%E8%A5%BF%E6%B9%96%E5%8D%81%E6%99%AF%E5%9C%96_%E9%9B%B7%E5%B3%B0%E5%A4%95%E7%85%A7.jpg",
+    "creator": "Ye Xiaoyan, a Chinese painter active in the early 13th century",
+    "license": "Public domain",
+    "license_url": "",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/%E5%AE%8B_%E8%91%89%E8%82%96%E5%B7%96_%E8%A5%BF%E6%B9%96%E5%8D%81%E6%99%AF%E5%9C%96_%E9%9B%B7%E5%B3%B0%E5%A4%95%E7%85%A7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "sha256": "4ace728b2df7053ef74f657807a574bb122e994c740edeb9bd782f2ee15b7185",
+    "description": "宋代叶肖岩《西湖十景图·雷峰夕照》，作为古典意象，不是晏殊居所",
+    "object_position": "50% 50%"
+  },
+  {
+    "id": "petals",
+    "kind": "image",
+    "path": "assets/petals.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Prunus_en_fleurs_au_parc_de_l%27Aulnaye_(p%C3%A9tales_tomb%C3%A9s).jpg",
+    "creator": "Tangopaso",
+    "license": "Public domain",
+    "license_url": "",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Prunus_en_fleurs_au_parc_de_l%27Aulnaye_%28p%C3%A9tales_tomb%C3%A9s%29.jpg/1920px-Prunus_en_fleurs_au_parc_de_l%27Aulnaye_%28p%C3%A9tales_tomb%C3%A9s%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sha256": "9a25752dce7e5f7e8049c3dccf1fc00371c1fb6acb9d67b2e1a54e8ecff2a70a",
+    "description": "樱花树下落花",
+    "object_position": "50% 50%"
+  },
+  {
+    "id": "garden",
+    "kind": "image",
+    "path": "assets/garden.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%B0%D0%B4_%D1%81%D0%BA%D1%80%D0%BE%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D1%87%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA%D0%B0_(Zhuozheng_Yuan)_(30156471140).jpg",
+    "creator": "Михаил Лазарев",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/%D0%A1%D0%B0%D0%B4_%D1%81%D0%BA%D1%80%D0%BE%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D1%87%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA%D0%B0_%28Zhuozheng_Yuan%29_%2830156471140%29.jpg/1920px-%D0%A1%D0%B0%D0%B4_%D1%81%D0%BA%D1%80%D0%BE%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D1%87%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA%D0%B0_%28Zhuozheng_Yuan%29_%2830156471140%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sha256": "1aa2340497461da16f5b95097efaa89bc2d89ff3c93b2d9369fd35bd93bdc44c",
+    "description": "苏州拙政园，作为亭台园径意象",
+    "object_position": "50% 50%"
+  },
+  {
+    "id": "swallow",
+    "kind": "image",
+    "path": "assets/swallow.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Andorinha-das-chamin%C3%A9s_20230407_Estu%C3%A1rio_do_Douro_1.jpg",
+    "creator": "FVBGil",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Andorinha-das-chamin%C3%A9s_20230407_Estu%C3%A1rio_do_Douro_1.jpg/1920px-Andorinha-das-chamin%C3%A9s_20230407_Estu%C3%A1rio_do_Douro_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sha256": "e49bd75c013fb63f86a8f1f509fb7dd6a8cb09e8aaa2f4e4434184241725363c",
+    "description": "家燕停栖，作为燕归意象",
+    "object_position": "50% 50%"
+  }
+]
