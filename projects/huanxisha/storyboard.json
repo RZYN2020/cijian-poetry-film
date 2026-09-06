@@ -103,17 +103,17 @@
   "scenes": [
     {
       "id": "s01",
-      "duration": 6.041666666666667,
+      "duration": 4.958333333333333,
       "narration": "很多年后，你又经过放学时走的那条路。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 1.6604166666666669,
+          "end": 1.3356915,
           "text": "很多年后，"
         },
         {
-          "start": 1.6604166666666669,
-          "end": 5.591666666666667,
+          "start": 1.3356915,
+          "end": 4.292766,
           "text": "你又经过放学时走的那条路。"
         }
       ],
@@ -124,21 +124,31 @@
       "claim_ids": [],
       "role": "modern_moment",
       "quote": "",
-      "audio": null
+      "audio": {
+        "path": "audio/5919d05f28db25fb7e1bbf42.wav",
+        "text_sha256": "cd8a4ac44d3aafdf26261fe6bbaebeba9d205dd99eabceec3304a0f1c2b2d4b5",
+        "file_sha256": "7d01074bfce8231c3c37e50adcf12a1355408c7109b6bc6ef54317d9215b42c2",
+        "duration": 3.942766,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s02",
-      "duration": 6.041666666666667,
+      "duration": 4.958333333333333,
       "narration": "店招换了。拐角还在。你下意识慢了半步。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 2.9708333333333337,
+          "end": 2.320499,
           "text": "店招换了。拐角还在。"
         },
         {
-          "start": 2.9708333333333337,
-          "end": 5.591666666666667,
+          "start": 2.320499,
+          "end": 4.290998,
           "text": "你下意识慢了半步。"
         }
       ],
@@ -149,26 +159,36 @@
       "claim_ids": [],
       "role": "emotion",
       "quote": "",
-      "audio": null
+      "audio": {
+        "path": "audio/c27bce5a0eb29d3d73304f7e.wav",
+        "text_sha256": "6e29e52d9f8dddc345cc79cea735738e14ec78fec6b479c39583c3714860c6b8",
+        "file_sha256": "0e765e751a3a3073e54a9c50c824f447f7a7deb99e0f8e9c550eccfac2ed49aa",
+        "duration": 3.940998,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s03",
-      "duration": 8.125,
+      "duration": 7.833333333333333,
       "narration": "去年天气旧亭台。原来，有些地方，一到那里，就会想起从前。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 2.5793478260869565,
+          "end": 2.426217956521739,
           "text": "去年天气旧亭台。"
         },
         {
-          "start": 2.5793478260869565,
-          "end": 4.490217391304348,
+          "start": 2.426217956521739,
+          "end": 4.205833347826087,
           "text": "原来，有些地方，"
         },
         {
-          "start": 4.490217391304348,
-          "end": 7.675000000000001,
+          "start": 4.205833347826087,
+          "end": 7.1718589999999995,
           "text": "一到那里，就会想起从前。"
         }
       ],
@@ -181,31 +201,41 @@
       ],
       "role": "poem_enters",
       "quote": "去年天气旧亭台",
-      "audio": null
+      "audio": {
+        "path": "audio/ad31304db46f65c6b28c7ccd.wav",
+        "text_sha256": "e627815eede57d2b0a25ecfd17b7fcb606c7f23ce68275df99c651e8e76e0dbd",
+        "file_sha256": "81d59c7b862232b1a472f33082f8aceeac89dacd293985d9b46d34fe67904b8e",
+        "duration": 6.821859,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s04",
-      "duration": 9.666666666666666,
+      "duration": 8.791666666666666,
       "narration": "北宋的晏殊，把这种恍惚写进《浣溪沙》。一曲新词，一杯酒，亭台却是旧的。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 1.9333333333333331,
+          "end": 1.736969464285714,
           "text": "北宋的晏殊，"
         },
         {
-          "start": 1.9333333333333331,
-          "end": 5.1,
+          "start": 1.736969464285714,
+          "end": 4.510908392857143,
           "text": "把这种恍惚写进《浣溪沙》。"
         },
         {
-          "start": 5.1,
-          "end": 7.316666666666666,
+          "start": 4.510908392857143,
+          "end": 6.452665642857142,
           "text": "一曲新词，一杯酒，"
         },
         {
-          "start": 7.316666666666666,
-          "end": 9.216666666666667,
+          "start": 6.452665642857142,
+          "end": 8.117029,
           "text": "亭台却是旧的。"
         }
       ],
@@ -220,21 +250,31 @@
       ],
       "role": "context",
       "quote": "",
-      "audio": null
+      "audio": {
+        "path": "audio/d6f3640322b29c26658c5991.wav",
+        "text_sha256": "71c099da6eba22ce81913a5c78f6e3d96b8dc03bcd36b78b1d16200040fb0c1a",
+        "file_sha256": "5c2ee4750992bedb8c7102e535e0d3959f652e992fd3b4228101b16fde6646cc",
+        "duration": 7.767029,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s05",
-      "duration": 5.416666666666667,
+      "duration": 4.666666666666667,
       "narration": "无可奈何花落去，似曾相识燕归来。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 2.6583333333333337,
+          "end": 2.1746485,
           "text": "无可奈何花落去，"
         },
         {
-          "start": 2.6583333333333337,
-          "end": 4.966666666666667,
+          "start": 2.1746485,
+          "end": 3.999297,
           "text": "似曾相识燕归来。"
         }
       ],
@@ -247,26 +287,36 @@
       ],
       "role": "rereading",
       "quote": "无可奈何花落去，似曾相识燕归来",
-      "audio": null
+      "audio": {
+        "path": "audio/4f4d0643729bea8a1a50ae5e.wav",
+        "text_sha256": "ada00456f878b466d294ca20d8aab12b6ca36c137fc4648e0f733d083fc3b9e7",
+        "file_sha256": "aef87207cd5d8a6f6a690f64de30ef6418b1251aee9e7b7836bef119dca68540",
+        "duration": 3.649297,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s06",
-      "duration": 7.541666666666667,
+      "duration": 6.5,
       "narration": "花落了，燕子又回来了。“似曾相识”，终究隔着一个“似”字。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 3.2392857142857148,
+          "end": 2.693381857142857,
           "text": "花落了，燕子又回来了。"
         },
         {
-          "start": 3.2392857142857148,
-          "end": 4.523412698412699,
+          "start": 2.693381857142857,
+          "end": 3.734884904761905,
           "text": "“似曾相识”，"
         },
         {
-          "start": 4.523412698412699,
-          "end": 7.091666666666667,
+          "start": 3.734884904761905,
+          "end": 5.8178909999999995,
           "text": "终究隔着一个“似”字。"
         }
       ],
@@ -279,26 +329,36 @@
       ],
       "role": "rereading",
       "quote": "",
-      "audio": null
+      "audio": {
+        "path": "audio/f7c870a8515657ed1cb2f407.wav",
+        "text_sha256": "fdb42c4484eb01c89a1cbecebc7f2879252409ec764744d0812f930bc4f146c2",
+        "file_sha256": "df2e2d67d134566a2eba6ce9dc51412b1163bc675bf0950411d0c5bff646485a",
+        "duration": 5.467891,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s07",
-      "duration": 9.041666666666666,
+      "duration": 7.833333333333333,
       "narration": "读到这里，我想起那条老路。路还认得，身边的人，却已经各自走远。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 3.836858974358974,
+          "end": 3.230185,
           "text": "读到这里，我想起那条老路。"
         },
         {
-          "start": 3.836858974358974,
-          "end": 6.372756410256409,
+          "start": 3.230185,
+          "end": 5.324865,
           "text": "路还认得，身边的人，"
         },
         {
-          "start": 6.372756410256409,
-          "end": 8.591666666666665,
+          "start": 5.324865,
+          "end": 7.15771,
           "text": "却已经各自走远。"
         }
       ],
@@ -309,26 +369,36 @@
       "claim_ids": [],
       "role": "return_today",
       "quote": "",
-      "audio": null
+      "audio": {
+        "path": "audio/b3f049b8d84f38b2f953cd8e.wav",
+        "text_sha256": "e5c5a73c30e3f28142f18458631c775f9d8bc105d218d6d1cae64920fd75b5ba",
+        "file_sha256": "17c07c5b06899f89568c5c12ddeefc17f9bd3e7adf40850cfd29bbe7a3d85d0b",
+        "duration": 6.80771,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     },
     {
       "id": "s08",
-      "duration": 8.125,
+      "duration": 6.583333333333333,
       "narration": "小园香径独徘徊。你在路口站了一会儿，等这一盏灯变绿。",
       "subtitle": [
         {
           "start": 0.35,
-          "end": 2.5793478260869565,
+          "end": 2.0398136956521737,
           "text": "小园香径独徘徊。"
         },
         {
-          "start": 2.5793478260869565,
-          "end": 5.445652173913043,
+          "start": 2.0398136956521737,
+          "end": 4.212431304347826,
           "text": "你在路口站了一会儿，"
         },
         {
-          "start": 5.445652173913043,
-          "end": 7.674999999999999,
+          "start": 4.212431304347826,
+          "end": 5.902245,
           "text": "等这一盏灯变绿。"
         }
       ],
@@ -341,7 +411,17 @@
       ],
       "role": "return_today",
       "quote": "小园香径独徘徊",
-      "audio": null
+      "audio": {
+        "path": "audio/1858115d52b43402b2a45921.wav",
+        "text_sha256": "6a20f1761e2562de8dcc715d3156d569c9e6e1917870e4397482f6b410c5d155",
+        "file_sha256": "a813126ec06776e70dcd1ffe0c4c27e9bae4584f0bbbd2fccfe4b5af05dacb8a",
+        "duration": 5.552245,
+        "offset": 0.35,
+        "provider": "macos",
+        "voice": "Tingting",
+        "rate": "180",
+        "timing_method": "estimated"
+      }
     }
   ]
 }
