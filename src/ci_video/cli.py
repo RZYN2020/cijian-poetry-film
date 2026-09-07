@@ -11,9 +11,11 @@ from .storage import read, save
 def main():
     p = argparse.ArgumentParser(description="Editable poetry films: independent stages, JSON on disk")
     subs = p.add_subparsers(dest="command", required=True)
-    for cmd in ["research", "script", "storyboard", "assets", "validate", "tts", "render", "init", "demo", "replay", "images", "import-image", "bgm", "credits"]:
+    for cmd in ["research", "script", "storyboard", "assets", "validate", "tts", "render", "init", "demo", "replay", "images", "import-image", "bgm", "credits", "edit"]:
         s = subs.add_parser(cmd)
         s.add_argument("project", type=Path)
+        if cmd == "edit":
+            s.add_argument("--port", type=int, default=8765)
         if cmd == "init":
             s.add_argument("--brief", type=Path, required=True)
             s.add_argument("--sources", type=Path, required=True)
@@ -46,7 +48,10 @@ def main():
                 save(args.directory / f"{model.__name__}.schema.json", model.model_json_schema(), history=False)
             return
         root = args.project.resolve()
-        if args.command in {"images", "import-image", "bgm", "credits"}:
+        if args.command == "edit":
+            from .editor import serve
+            serve(root, args.port)
+        elif args.command in {"images", "import-image", "bgm", "credits"}:
             from . import assets
             if args.command == "images":
                 assets.images(root, args.scene, args.dry_run)
