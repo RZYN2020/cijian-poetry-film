@@ -14,6 +14,7 @@ import httpx
 from dotenv import load_dotenv
 
 from .storage import digest, now, save
+from . import traces
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -38,11 +39,12 @@ def settings(kind):
 
 def post(project, kind, endpoint, payload):
     base, key, _ = settings(kind)
+    traces.update(provider=base, model=payload.get('model'), request=payload, endpoint=endpoint)
     if not key:
         raise MediaError(f"Set {kind}_API_KEY for {base}; credentials are never inferred across providers")
     request_hash = digest(json.dumps({"base": base, "payload": payload}, sort_keys=True, ensure_ascii=False))
     run = Path(project) / "runs" / f"{kind.lower()}-{request_hash[:12]}-{uuid4().hex[:6]}.json"
-    record = {"created_at": now(), "provider": base, "request_hash": request_hash, "request": payload, "status": "started"}
+    record = {"created_at": now(), "provider": base, "request_hash": request_hash, "request": payload, "status": "started", "trace_id": traces.CURRENT.get().data['id'] if traces.CURRENT.get() else None}
     save(run, record, history=False)
     try:
         r = httpx.post(base + endpoint, json=payload, headers={"Authorization": f"Bearer {key}"}, timeout=180)
@@ -51,6 +53,7 @@ def post(project, kind, endpoint, payload):
         save(run, record, history=False)
         raise MediaError(f"{kind}: transport error (request saved; no automatic retry)") from None
     if r.status_code != 200:
+        traces.update(http_status=r.status_code)
         code = "http_error"
         try:
             raw = r.json().get("error", {})
@@ -61,9 +64,11 @@ def post(project, kind, endpoint, payload):
         except (ValueError, AttributeError):
             pass
         record.update(status="failed", http_status=r.status_code, error=code)
+        traces.update(response={'http_status':r.status_code,'error':code,'body':r.text.replace(key,'[REDACTED]')})
         save(run, record, history=False)
         raise MediaError(f"{kind}: HTTP {r.status_code} ({code}); stage stopped, existing assets preserved")
     record.update(status="received", http_status=r.status_code, response_sha256=digest(r.content))
+    traces.update(http_status=r.status_code, response_sha256=digest(r.content), response_bytes=len(r.content))
     save(run, record, history=False)
     return r, run, record
 
@@ -95,6 +100,7 @@ def fetch(url, destination):
         tmp.unlink(missing_ok=True)
 
 
+@traces.traced('speech_api')
 def speech_request(project, text, voice, model, speed, instructions):
     payload = {"model": model, "input": text, "voice": voice, "response_format": "mp3", "speed": speed}
     if instructions:
@@ -105,16 +111,22 @@ def speech_request(project, text, voice, model, speed, instructions):
     return response.content, run, record
 
 
-def image_request(project, prompt, destination):
+@traces.traced('image_api')
+def image_request(project, prompt, destination, prompt_snapshot=None):
     _, _, model = settings("IMAGE")
     payload = {"model": model, "prompt": prompt, "n": 1, "size": os.getenv("IMAGE_SIZE", "1024x1536")}
     quality = os.getenv("IMAGE_QUALITY", "medium")
+    if prompt_snapshot:
+        traces.update(prompt=prompt_snapshot,scene_id=prompt_snapshot.get('scene_id'))
+        payload.update({k:v for k,v in prompt_snapshot['parameters'].items() if k in {'model','size'}})
+        quality = prompt_snapshot['parameters'].get('quality', quality)
     if quality:
         payload["quality"] = quality
     response, run, record = post(project, "IMAGE", "/images/generations", payload)
     try:
         data = response.json()
         item = data["data"][0]
+        traces.update(response={**data, 'data': [{k:v for k,v in item.items() if k != 'b64_json'}]}, usage=data.get('usage'))
         destination.parent.mkdir(parents=True, exist_ok=True)
         if item.get("b64_json"):
             destination.write_bytes(base64.b64decode(item["b64_json"], validate=True))
@@ -129,6 +141,7 @@ def image_request(project, prompt, destination):
                       sha256=digest(destination.read_bytes()), usage=data.get("usage"),
                       revised_prompt=item.get("revised_prompt"))
         save(run, record, history=False)
+        traces.update(artifacts=[{'path':str(destination.relative_to(project)), 'sha256':record['sha256']}])
         return record
     except (ValueError, KeyError, IndexError, OSError):
         destination.unlink(missing_ok=True)

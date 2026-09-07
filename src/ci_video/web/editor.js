@@ -14,7 +14,7 @@ function option(value, text) { const node = document.createElement('option'); no
 function markDirty() { dirty=true; $('save-state').textContent='有未保存修改'; $('output-state').textContent='当前修改尚未导出。下方为上次成片。'; }
 function controls() {
   const running = busy || state?.job.status === 'running';
-  document.querySelectorAll('.inspector input,.inspector textarea,.inspector select,.inspector button,#save,#render,#reload').forEach(el=>el.disabled=running);
+  document.querySelectorAll('.inspector input,.inspector textarea,.inspector select,.inspector button,#save,#render,#reload,#project-select,#prompts-pane input,#prompts-pane textarea,#prompts-pane select,#prompts-pane button').forEach(el=>el.disabled=running);
   $('save-state').textContent = running ? '任务进行中…' : dirty ? '有未保存修改' : '已保存到本机';
 }
 function paintList() {

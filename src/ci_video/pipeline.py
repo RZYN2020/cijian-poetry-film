@@ -43,7 +43,6 @@ def research(project):
     manifest = read(project / "project.json", ContentProject)
     bundle = read(project / "sources.json", ResearchPack)
     pack, _ = generate(project, "research", ResearchPack,
-        "整理给定的校验来源包。sources、evidence、original_text、author、poem_title 必须原样保留。只可改写 claims 的说明、未知项、异文说明。不要补写年份、人物关系、宴会情节或虚构网页；将解释标为 interpretation。review_status 必须 needs_review。",
         {"brief": manifest.brief.model_dump(), "verified_source_bundle": bundle.model_dump()})
     for attr in ("sources", "evidence", "original_text", "author", "poem_title"):
         if getattr(pack, attr) != getattr(bundle, attr):
@@ -57,7 +56,6 @@ def script(project):
     manifest = read(project / "project.json", ContentProject)
     pack = read(project / "research.json", ResearchPack)
     result, run = generate(project, "script", Script,
-        "创作纯宋词朗诵视频的画面分镜。mode=recital，每段role=recital。narration只能是original_text的原词，按原顺序逐句分段，总共完整朗诵一遍，一字不增不减。禁止任何解释、开场白、现代生活旁白、作者生平；不要朗读作者和标题。6~10段，subtitle_lines和quote只含该段原词。visual_intent描述统一的宋代水墨动画风格、古典园林和景色，按句意从暮春过渡到夕照与空园。asset_hint用已有素材ID。claim_ids引用研究包，provenance=API draft。",
         {"brief": manifest.brief.model_dump(), "research": pack.model_dump(), "assets": read(project / "assets/manifest.json")})
     validate_script(result, pack)
     result.provenance = f"API draft; request/response: {run.relative_to(project)}"

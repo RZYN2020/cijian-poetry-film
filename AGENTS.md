@@ -57,6 +57,12 @@ uv run ci-video render projects/new-film
 
 ## 维护与验收
 
+- UI 使用直接的操作名称和状态，避免标语、拟人化、营销文案。Workspace 的重点是项目文件、Prompt 版本与可检查的运行数据。
+- 不把 Prompt 写回 Python 字符串：种子在 `prompts/*.json`，项目独立版本由 `prompts.py` 管理。实际执行必须使用 `resolve()` 的展开文本和版本快照。
+- 新增 AI provider/调用路径必须接入 `traces.py`，记录请求、响应、Prompt、模型参数、用量（未知为 null）、错误与输出哈希。命令通过 run_id/parent_id 关联，缓存需明确标记。外部导入不能伪装成已观测的 API Trace。
+- 评价与原始 Trace 分开保存。新增 Trace 字段须兼容 legacy/imported 记录。不要输出密钥，也不要为了“完整记录”捕获模型内部思维或系统外不可见信息。
+- 项目 `prompts/ traces/ evaluations/` 默认不提交 Git；种子模板可以提交。备份实验数据需同时备份这些本地文件。详见 `docs/workspace.md`。
+
 - KISS / YAGNI：保持 Python + JSON + Remotion，不引入 Agent Framework、服务平台或自研工作流引擎。
 - 所有 UI 写入经过 Pydantic/原词校验，保留 JSON 历史；不要绕过哈希、路径、音频时长检查。
 - 修改 API/数据合同应补边界测试；UI 改动需实际打开验证，渲染改动需检查真实 MP4 的画面、时长和音轨。Mock 测试不等于外部调用已成功。

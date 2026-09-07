@@ -17,3 +17,8 @@ projects/*/*.mp4
 projects/*/qa/
 .cache/
 examples/*/history/
+projects/*/prompts/
+projects/*/traces/
+projects/*/evaluations/
+projects/*/*.jsonl
+projects/*/image-prompts.json

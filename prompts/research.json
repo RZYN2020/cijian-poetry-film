@@ -1,0 +1,1 @@
+{"id":"research","name":"来源整理","body":"整理给定的校验来源包。sources、evidence、original_text、author、poem_title 必须原样保留。只可改写 claims 的说明、未知项、异文说明。不要补写年份、人物关系、宴会情节或虚构网页；将解释标为 interpretation。review_status 必须 needs_review。","variables":[],"parameters":{}}

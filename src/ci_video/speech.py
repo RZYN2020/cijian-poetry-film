@@ -15,6 +15,8 @@ from .models import Storyboard
 from .storage import read, save, digest, local_file
 from .pipeline import normalize
 from .media_api import settings, speech_request
+from .prompts import resolve
+from . import traces
 
 
 def duration(path):
@@ -55,6 +57,7 @@ def align(lines, events, audio_seconds, offset):
     return cues, "tts_boundaries" if exact else "estimated"
 
 
+@traces.traced('tts', 'stage')
 async def synthesize(project, fit=False, provider=None, voice=None):
     load_dotenv(ROOT / ".env.local")
     board = read(project / "storyboard.json", Storyboard).model_dump()
@@ -65,10 +68,14 @@ async def synthesize(project, fit=False, provider=None, voice=None):
     defaults = {"external": "coral", "edge": "zh-CN-XiaoxiaoNeural", "macos": "Tingting"}
     if provider not in defaults:
         raise ValueError("Unknown TTS provider")
-    voice = voice or os.getenv(f"{provider.upper()}_TTS_VOICE", defaults[provider])
-    model = api_model if provider == "external" else provider
+    instruction, prompt = resolve(project, 'tts')
+    params = prompt['parameters']
+    voice = voice or params.get('edge_voice' if provider == 'edge' else 'voice') or os.getenv(f"{provider.upper()}_TTS_VOICE", defaults[provider])
+    model = params.get('model', api_model) if provider == "external" else provider
     rate = os.getenv("TTS_SPEED", "0.8") if provider == "external" else os.getenv("EDGE_TTS_RATE", "-30%") if provider == "edge" else os.getenv("MACOS_TTS_RATE", "130")
-    instructions = os.getenv("TTS_INSTRUCTIONS", "以温柔、自然、平静的中文女声朗诵宋词。吐字清楚，四三节奏，含蓄、略带怀旧，句尾留白。不模仿播音腔，不唱歌，不添加任何输入以外的文字。") if provider == "external" else ""
+    rate = str(params.get('speed' if provider == 'external' else 'edge_rate',rate)) if provider != 'macos' else rate
+    instructions = instruction if provider == "external" else ""
+    traces.update(prompt=prompt, provider=provider, model=model, note='Edge/macOS do not accept prose instructions; voice/rate only' if provider != 'external' else None)
     for scene in board["scenes"]:
         key = digest(json.dumps([scene["narration"], provider, base if provider == "external" else "", model, voice, rate, instructions], ensure_ascii=False))[:24]
         ext = "mp3" if provider in {"edge", "external"} else "wav"
@@ -76,34 +83,7 @@ async def synthesize(project, fit=False, provider=None, voice=None):
         path = local_file(project, relative)
         sidecar = path.with_suffix(".json")
         path.parent.mkdir(parents=True, exist_ok=True)
-        valid_cache = path.exists() and sidecar.exists() and read(sidecar).get("sha256") == digest(path.read_bytes())
-        if not valid_cache:
-            tmp = path.with_name(f"{key}.tmp.{ext}")
-            events = []
-            try:
-                if provider == "edge":
-                    communicate = edge_tts.Communicate(scene["narration"], voice, rate=rate, boundary="SentenceBoundary")
-                    with tmp.open("wb") as f:
-                        async for chunk in communicate.stream():
-                            if chunk["type"] == "audio":
-                                f.write(chunk["data"])
-                            elif chunk["type"] in ("WordBoundary", "SentenceBoundary"):
-                                events.append(chunk)
-                elif provider == "external":
-                    data, run, record = await asyncio.to_thread(speech_request, project, scene["narration"], voice, model, float(rate), instructions)
-                    tmp.write_bytes(data)
-                    duration(tmp)  # Do not mark malformed/empty audio as successful.
-                    record.update(status="complete", output=relative, sha256=digest(data))
-                    save(run, record, history=False)
-                else:
-                    # Force ordinary WAV PCM; Remotion's bundled ffprobe cannot decode Apple's AIFF-C.
-                    subprocess.run(["say", "-v", voice, "-r", rate, "--file-format=WAVE", "--data-format=LEI16@22050", "-o", str(tmp), scene["narration"]], check=True)
-                seconds = duration(tmp)
-                tmp.replace(path)
-                save(sidecar, {"sha256": digest(path.read_bytes()), "duration": seconds, "events": events}, history=False)
-            finally:
-                tmp.unlink(missing_ok=True)
-        cache = read(sidecar)
+        cache = await obtain_audio(project, scene['id'], scene['narration'], provider, model, voice, rate, instructions, path, prompt)
         seconds = cache["duration"]
         offset = scene["voice_offset"]
         if fit:
@@ -127,3 +107,41 @@ async def synthesize(project, fit=False, provider=None, voice=None):
         start += scene.duration
     (project / "subtitles.srt").write_text(srt.compose(captions))
     print(f"Total: {start:.2f}s", flush=True)
+
+
+@traces.traced('speech')
+async def obtain_audio(project, scene_id, text, provider, model, voice, rate, instructions, path, prompt):
+    traces.update(scene_id=scene_id, provider=provider, model=model, prompt=prompt,
+                  request={'input':text,'voice':voice,'rate':rate,'instructions':instructions})
+    sidecar = path.with_suffix('.json')
+    if path.exists() and sidecar.exists() and read(sidecar).get('sha256') == digest(path.read_bytes()):
+        cache = read(sidecar)
+        traces.update(result_status='cached', artifacts=[{'path':str(path.relative_to(project)), 'sha256':cache['sha256']}], response=cache)
+        return cache
+    tmp = path.with_name(path.stem + '.tmp' + path.suffix)
+    events = []
+    try:
+        if provider == 'edge':
+            communicate = edge_tts.Communicate(text, voice, rate=rate, boundary='SentenceBoundary')
+            with tmp.open('wb') as f:
+                async for chunk in communicate.stream():
+                    if chunk['type'] == 'audio':
+                        f.write(chunk['data'])
+                    elif chunk['type'] in ('WordBoundary','SentenceBoundary'):
+                        events.append(chunk)
+        elif provider == 'external':
+            data, run, record = await asyncio.to_thread(speech_request, project, text, voice, model, float(rate), instructions)
+            tmp.write_bytes(data)
+            duration(tmp)
+            record.update(status='complete',output=str(path.relative_to(project)),sha256=digest(data))
+            save(run,record,history=False)
+        else:
+            subprocess.run(['say','-v',voice,'-r',rate,'--file-format=WAVE','--data-format=LEI16@22050','-o',str(tmp),text],check=True)
+        seconds = duration(tmp)
+        tmp.replace(path)
+        cache = {'sha256':digest(path.read_bytes()),'duration':seconds,'events':events}
+        save(sidecar,cache,history=False)
+        traces.update(response=cache,artifacts=[{'path':str(path.relative_to(project)),'sha256':cache['sha256']}])
+        return cache
+    finally:
+        tmp.unlink(missing_ok=True)

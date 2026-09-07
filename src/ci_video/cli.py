@@ -8,12 +8,15 @@ from .models import Brief, ContentProject, ResearchPack, Script, Storyboard
 from .storage import read, save
 
 
-def main():
+def _main():
     p = argparse.ArgumentParser(description="Editable poetry films: independent stages, JSON on disk")
     subs = p.add_subparsers(dest="command", required=True)
-    for cmd in ["research", "script", "storyboard", "assets", "validate", "tts", "render", "init", "demo", "replay", "images", "import-image", "bgm", "credits", "edit"]:
+    for cmd in ["research", "script", "storyboard", "assets", "validate", "tts", "render", "init", "demo", "replay", "images", "import-image", "bgm", "credits", "edit", "traces"]:
         s = subs.add_parser(cmd)
         s.add_argument("project", type=Path)
+        if cmd == 'traces':
+            s.add_argument('--export', type=Path)
+            s.add_argument('--import-legacy', action='store_true')
         if cmd == "edit":
             s.add_argument("--port", type=int, default=8765)
         if cmd == "init":
@@ -48,7 +51,15 @@ def main():
                 save(args.directory / f"{model.__name__}.schema.json", model.model_json_schema(), history=False)
             return
         root = args.project.resolve()
-        if args.command == "edit":
+        if args.command == 'traces':
+            from . import traces
+            if args.import_legacy:
+                print(f'Imported {traces.import_legacy(root)} records')
+            if args.export:
+                args.export.write_text(traces.export(root))
+            else:
+                print(f'{len(traces.records(root))} traces')
+        elif args.command == "edit":
             from .editor import serve
             serve(root, args.port)
         elif args.command in {"images", "import-image", "bgm", "credits"}:
@@ -95,8 +106,31 @@ def main():
             {"research": pipeline.research, "script": pipeline.script,
              "storyboard": pipeline.board, "assets": pipeline.download_assets}[args.command](root)
     except Exception as e:
+        from .traces import update
+        update(error={'type':type(e).__name__,'message':str(e)[:2000]})
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
+
+
+def main():
+    import os
+    from .traces import Trace
+    if len(sys.argv) >= 3 and not sys.argv[2].startswith('-') and sys.argv[1] in {'research','script','storyboard','assets','tts','render','replay','images','import-image','bgm'}:
+        project = Path(sys.argv[2]).resolve()
+        with Trace(project, sys.argv[1], 'stage', command=sys.argv[1:]) as trace:
+            previous = {k:os.environ.get(k) for k in ('CI_RUN_ID','CI_PARENT_TRACE_ID')}
+            os.environ['CI_RUN_ID'] = trace.data['run_id']
+            os.environ['CI_PARENT_TRACE_ID'] = trace.data['id']
+            try:
+                _main()
+            finally:
+                for key,value in previous.items():
+                    if value is None:
+                        os.environ.pop(key,None)
+                    else:
+                        os.environ[key]=value
+    else:
+        _main()
 
 
 if __name__ == "__main__":

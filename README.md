@@ -21,6 +21,8 @@ uv run ci-video edit projects/huanxisha
 
 其他 Agent 的使用与维护指南见 [AGENTS.md](AGENTS.md)。
 
+Workspace 现在包含 **分镜 / Prompts / 运行记录**。Prompt 正文和参数可保存版本并回退；AI 调用记录输入、输出、版本、耗时、错误和用量，支持人工评分、备注、标签及 JSONL 导出。配置与数据位置见 [Workspace 使用说明](docs/workspace.md)。
+
 ```sh
 uv sync
 npm ci

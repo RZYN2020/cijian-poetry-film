@@ -6,12 +6,8 @@ import shutil
 from .models import Asset, Storyboard
 from .storage import digest, local_file, now, read, save
 from .media_api import fetch, image_request, settings, ROOT
-
-STYLE = ("Vertical 9:16 full-bleed Song dynasty garden, refined hand-painted Chinese animation background. "
-         "Same old pavilion, willow and apricot tree across shots. Restrained ink wash and mineral pigments, "
-         "jade-grey, ivory, ink-blue, small amber dusk accents. Quiet wistful late spring. Layered depth, "
-         "delicate brushwork, credible architecture. Lower middle quiet for later subtitles. "
-         "No modern objects, no text, calligraphy, seals, logos, borders or watermark. ")
+from .prompts import resolve
+from . import traces
 
 
 def register(project, asset, scene_id=None):
@@ -30,6 +26,7 @@ def register(project, asset, scene_id=None):
     save(project / "assets/manifest.json", [a.model_dump() for a in b.assets])
 
 
+@traces.traced('images', 'stage')
 def images(project, scene_id=None, dry_run=False):
     b = read(project / "storyboard.json", Storyboard)
     base, _, model = settings("IMAGE")
@@ -39,13 +36,16 @@ def images(project, scene_id=None, dry_run=False):
     import os
     jobs = []
     for s in scenes:
-        prompt = STYLE + "Shot: " + s.visual_intent
+        prompt, snapshot = resolve(project, 'image', {'visual_intent':s.visual_intent})
+        snapshot['scene_id'] = s.id
         config = {"provider": base, "model": model, "prompt": prompt,
                   "size": os.getenv("IMAGE_SIZE", "1024x1536"), "quality": os.getenv("IMAGE_QUALITY", "medium")}
+        config.update(snapshot['parameters'])
         key = digest(json.dumps(config, sort_keys=True, ensure_ascii=False))[:24]
-        jobs.append({"scene_id": s.id, "key": key, **config})
+        jobs.append({"scene_id": s.id, "key": key, **config, 'prompt_snapshot':snapshot})
     save(project / "image-prompts.json", jobs)
     if dry_run:
+        traces.update(result_status='dry_run', request=jobs)
         print(f"Saved {len(jobs)} requests to image-prompts.json; no network calls")
         return
     for job in jobs:
@@ -54,16 +54,19 @@ def images(project, scene_id=None, dry_run=False):
         meta = dest.with_suffix(".json")
         if dest.exists() and meta.exists() and read(meta).get("sha256") == digest(dest.read_bytes()):
             generation = read(meta)
+            with traces.Trace(project, 'image_api', scene_id=job['scene_id'], prompt=job['prompt_snapshot'], request=job) as trace:
+                trace.update(result_status='cached', artifacts=[{'path':path,'sha256':generation['sha256']}], provider=base, model=job['model'])
         else:
-            generation = image_request(project, job["prompt"], dest)
-            generation = {**job, "created_at": now(), "sha256": generation["sha256"]}
+            generation = image_request(project, job["prompt"], dest, job['prompt_snapshot'])
+            generation = {**job, "created_at": now(), "sha256": generation["sha256"], 'trace_id':generation.get('trace_id')}
             save(meta, generation, history=False)
         register(project, Asset(id=f"generated-{job['scene_id']}", kind="image", path=path,
-            source=base, creator=f"AI generated / {model}", license="Generated output; provider terms apply",
+            source=base, creator=f"AI generated / {job['model']}", license="Generated output; provider terms apply",
             description=job["prompt"], sha256=digest(dest.read_bytes()), acquired_at=now(), generation=generation), job["scene_id"])
         print(f"image ready: {job['scene_id']}", flush=True)
 
 
+@traces.traced('import_image', 'import')
 def import_image(project, scene_id, source_path, prompt, provider):
     from PIL import Image
     source_path = Path(source_path)
@@ -74,7 +77,8 @@ def import_image(project, scene_id, source_path, prompt, provider):
     destination = local_file(project, relative)
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(source_path, destination)
-    generation = {"provider": provider, "prompt": prompt, "created_at": now(), "sha256": sha}
+    generation = {"provider": provider, "prompt": prompt, "created_at": now(), "sha256": sha, 'trace_id':traces.CURRENT.get().data['id']}
+    traces.update(provider=provider, prompt={'rendered':prompt,'version':None}, artifacts=[{'path':relative,'sha256':sha}], note='Imported output; original API call not observed')
     register(project, Asset(id=f"generated-{scene_id}", kind="image", path=relative, source=provider,
         creator=f"AI generated / {provider}", license="Generated output; provider terms apply",
         description=prompt, sha256=sha, acquired_at=now(), generation=generation), scene_id)

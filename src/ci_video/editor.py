@@ -14,6 +14,7 @@ from urllib.parse import unquote, urlsplit
 from .models import Asset, Storyboard
 from .pipeline import ROOT, validate_recital
 from .storage import digest, local_file, now, read, save
+from . import prompts, traces
 
 WEB = Path(__file__).parent / "web"
 
@@ -29,12 +30,15 @@ class Editor:
         self.token = secrets.token_urlsafe(32)
         self.lock = threading.RLock()
         self.job = {"status": "idle", "log": ""}
+        self.workspace = self.project.parent
+        traces.import_legacy(self.project)
 
     def snapshot(self):
         data = (self.project / "storyboard.json").read_bytes()
         board = Storyboard.model_validate_json(data)
         report = read(self.project / "render-report.json") if (self.project / "render-report.json").exists() else {}
-        return {"board": board.model_dump(), "revision": digest(data), "job": dict(self.job),
+        return {"board": board.model_dump(), "revision": digest(str(self.project).encode()+data), "job": dict(self.job),
+                "project_name":self.project.name,
                 "output_exists": (self.project / "output.mp4").exists(),
                 "output_current": report.get("storyboard_sha256") == digest(data),
                 "output_version": report.get("output_sha256", ""),
@@ -43,7 +47,7 @@ class Editor:
     def writable(self, revision):
         if self.job["status"] == "running":
             raise Conflict("后台任务进行中，请完成后再编辑。")
-        if revision != digest((self.project / "storyboard.json").read_bytes()):
+        if revision != digest(str(self.project).encode()+(self.project / "storyboard.json").read_bytes()):
             raise Conflict("项目已在其他窗口或命令行修改，请重新载入。")
 
     def update(self, payload):
@@ -137,6 +141,13 @@ class Editor:
                 if track not in {t["id"] for t in read(ROOT / "examples/music/catalog.json")}:
                     raise ValueError("未知音乐。")
                 args += ["bgm", str(self.project), "--track", track]
+            elif action == 'images':
+                scene_id = payload.get('scene_id')
+                if scene_id not in {s.id for s in read(self.project/'storyboard.json',Storyboard).scenes}:
+                    raise ValueError('未知镜头')
+                args += ['images',str(self.project),'--scene',scene_id]
+            elif action in {'research','script'}:
+                args += [action,str(self.project)]
             else:
                 raise ValueError("未知任务。")
             self.job = {"status": "running", "action": action, "log": "", "started_at": now()}
@@ -155,6 +166,38 @@ class Editor:
         except Exception:
             with self.lock:
                 self.job.update(status="failed", log="无法启动任务。请查看本机终端。")
+
+    def workspace_data(self):
+        projects = []
+        for p in self.workspace.iterdir():
+            if p.is_dir() and not p.is_symlink() and (p/'storyboard.json').is_file():
+                projects.append({'id':p.name,'current':p.resolve()==self.project})
+        return {'projects':projects,'current':self.project.name,'prompts':prompts.catalog(self.project)}
+
+    def switch(self, payload):
+        with self.lock:
+            self.writable(payload.get('revision'))
+            name = payload['project']
+            if name not in {p['id'] for p in self.workspace_data()['projects']}:
+                raise ValueError('未知项目')
+            target = local_file(self.workspace,name)
+            read(target/'storyboard.json',Storyboard)
+            self.project = target
+            traces.import_legacy(target)
+            self.job = {'status':'idle','log':''}
+            return self.snapshot()
+
+    def prompt_action(self, payload):
+        with self.lock:
+            self.writable(payload.get('revision'))
+            if payload.get('action') == 'activate':
+                return prompts.activate(self.project,payload['id'],payload['version'],payload['expected'])
+            return prompts.publish(self.project,payload['prompt'],payload['expected'])
+
+    def evaluate(self, payload):
+        with self.lock:
+            self.writable(payload.get('revision'))
+            return traces.annotate(self.project,payload['id'],payload.get('score'),payload.get('note',''),payload.get('tags',[]))
 
 
 def make_server(project, port=8765):
@@ -186,15 +229,36 @@ def make_server(project, port=8765):
                 if route == "/":
                     html = (WEB / "index.html").read_text().replace("__TOKEN__", editor.token)
                     return self.send(200, html.encode(), "text/html; charset=utf-8")
-                if route in {"/editor.js", "/style.css"}:
+                if route in {"/editor.js", "/style.css", "/workspace.js"}:
                     return self.send(200, (WEB / route[1:]).read_bytes(), "text/javascript" if route.endswith("js") else "text/css")
                 if route == "/api/state":
                     with editor.lock:
                         return self.send(200, editor.snapshot())
+                if route == '/api/workspace':
+                    with editor.lock:
+                        return self.send(200,editor.workspace_data())
+                if route in {'/api/traces','/api/traces/export'}:
+                    with editor.lock:
+                        if route.endswith('/export'):
+                            return self.send(200,traces.export(editor.project).encode(),'application/x-ndjson; charset=utf-8')
+                        entries = traces.records(editor.project)
+                        fields = {'id','run_id','parent_id','stage','kind','status','started_at','duration_ms','provider','model','evaluation','prompt','scene_id'}
+                        summaries = [{k:v for k,v in e.items() if k in fields and k!='prompt'} | {'prompt_version':(e.get('prompt') or {}).get('version')} for e in entries]
+                        return self.send(200,{'records':summaries[:200], 'total':len(entries)})
+                if route.startswith('/api/trace/'):
+                    identifier = route.rsplit('/',1)[-1]
+                    with editor.lock:
+                        item = next((e for e in traces.records(editor.project) if e['id']==identifier),None)
+                        return self.send(200,item) if item else self.send(404,{'error':'Unknown trace'})
                 if route.startswith("/media/"):
                     relative = route[len("/media/"):]
                     b = read(editor.project / "storyboard.json", Storyboard)
                     allowed = {a.path for a in b.assets} | {s.audio.path for s in b.scenes if s.audio} | {"output.mp4"}
+                    for entry in traces.records(editor.project):
+                        for artifact in entry.get('artifacts',[]):
+                            candidate = artifact.get('path','')
+                            if Path(candidate).suffix.lower() in {'.png','.jpg','.jpeg','.webp','.mp3','.wav','.m4a','.mp4'}:
+                                allowed.add(candidate)
                     if relative not in allowed:
                         return self.send(404, {"error": "Unknown media"})
                     return self.media(local_file(editor.project, relative))
@@ -248,7 +312,8 @@ def make_server(project, port=8765):
                 if not 0 < length <= 42 * 1024 * 1024:
                     return self.send(413, {"error": "请求过大，文件上限 30 MB。"})
                 payload = json.loads(self.rfile.read(length))
-                action = {"/api/save": editor.update, "/api/upload": editor.upload, "/api/job": editor.start}.get(self.path)
+                action = {"/api/save": editor.update, "/api/upload": editor.upload, "/api/job": editor.start,
+                          '/api/project':editor.switch,'/api/prompt':editor.prompt_action,'/api/evaluation':editor.evaluate}.get(self.path)
                 if action is None:
                     return self.send(404, {"error": "Not found"})
                 self.send(200, action(payload))
